@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>FireGuard · Satellite lab</title>
+  <style>
+    :root { --paper:#f5f4ef; --white:#fffefa; --ink:#202b26; --muted:#758077; --line:#dedfd6; --yellow:#f9a825; --green:#447358; --font:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:var(--font); color:var(--ink); background:var(--paper); font-size:14px; -webkit-font-smoothing:antialiased; }
+    button,input,select { font:inherit; }
+    button { cursor:pointer; }
+    button:disabled { cursor:wait; }
+    button:focus-visible,input:focus-visible,select:focus-visible { outline:3px solid #f9a82590; outline-offset:3px; }
+    [hidden] { display:none!important; }
+    .topbar { height:76px; display:flex; align-items:center; justify-content:space-between; padding:0 30px; background:var(--white); border-bottom:1px solid var(--line); gap:20px; }
+    .brand { display:flex; align-items:center; gap:11px; font-weight:750; letter-spacing:-.6px; font-size:22px; }
+    .brand-icon { background:var(--yellow); width:35px; height:35px; border-radius:11px; display:grid; place-items:center; }
+    .brand-icon svg { width:24px; height:24px; }
+    .brand-divider { height:23px; width:1px; background:var(--line); margin:0 8px; }
+    .product-name { color:#788078; font-weight:500; font-size:14px; letter-spacing:0; }
+    .local-badge { display:flex; align-items:center; gap:8px; border:1px solid var(--line); border-radius:50px; padding:8px 12px; font-size:11px; font-weight:650; letter-spacing:.6px; text-transform:uppercase; white-space:nowrap; }
+    .local-badge span { width:6px; height:6px; background:var(--yellow); border-radius:100%; }
+    .layout { display:grid; grid-template-columns:324px minmax(0,1fr); min-height:calc(100vh - 76px); }
+    .rail { border-right:1px solid var(--line); background:var(--white); padding:29px 25px 22px; }
+    .eyebrow { font-size:10px; font-weight:750; letter-spacing:1.8px; text-transform:uppercase; color:var(--muted); }
+    .rail h1 { margin:8px 0 8px; font-size:25px; font-weight:680; letter-spacing:-.9px; }
+    .intro { color:var(--muted); line-height:1.6; font-size:12px; margin:0 0 24px; }
+    fieldset { margin:0; padding:0; border:0; min-width:0; }
+    .field { margin:0 0 18px; }
+    label,.field-label { display:block; font-size:11px; font-weight:680; margin-bottom:8px; }
+    select,input { color:var(--ink); border:1px solid var(--line); border-radius:7px; padding:10px 11px; background:#fffefa; width:100%; min-width:0; height:40px; font-size:12px; }
+    select { cursor:pointer; }
+    .bbox { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10px; letter-spacing:-.15px; background:#f7f7f2; }
+    .help { font-size:10px; line-height:1.5; color:var(--muted); margin:6px 0 0; }
+    .period { border-top:1px solid var(--line); padding-top:18px; margin-top:20px; }
+    .period-title { display:flex; align-items:center; gap:8px; margin-bottom:12px; font-size:12px; font-weight:700; }
+    .period-index { display:grid; place-items:center; width:23px; height:23px; border-radius:6px; font-size:10px; background:#eceee7; color:#5c6b60; }
+    .period.after .period-index { background:#fff0cf; color:#9b6a13; }
+    .date-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .date-row label { color:var(--muted); font-size:10px; font-weight:500; }
+    .date-row input { font-size:11px; padding:9px 6px; }
+    .load { display:flex; align-items:center; justify-content:center; gap:9px; width:100%; margin-top:23px; border:0; border-radius:8px; background:var(--yellow); padding:13px 9px; font-size:12px; font-weight:750; color:#372a0e; transition:background .15s,transform .15s; }
+    .load:hover { background:#ffb535; }
+    .load:active { transform:translateY(1px); }
+    .load svg { width:16px; height:16px; }
+    .load:disabled { opacity:.65; }
+    .request-note { text-align:center; font-size:10px; line-height:1.5; color:var(--muted); margin:10px 0 0; }
+    .connections { border-top:1px solid var(--line); margin-top:24px; padding-top:19px; }
+    .connection { display:flex; align-items:center; gap:9px; font-size:11px; margin:12px 0; }
+    .dot { width:6px; height:6px; border-radius:50%; background:#b7bdb6; flex-shrink:0; }
+    .dot.good { background:var(--green); }
+    .dot.pending { background:#d19b32; }
+    .dot.bad { background:#bb5945; }
+    .connection small { display:block; font-size:10px; color:var(--muted); margin-top:4px; line-height:1.4; }
+    .main { padding:31px 32px 24px; min-width:0; }
+    .workspace-header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:23px; }
+    .workspace-header h2 { margin:6px 0 8px; font-size:28px; line-height:1.15; font-weight:630; letter-spacing:-1px; }
+    .workspace-header p { color:var(--muted); font-size:12px; margin:0; line-height:1.5; }
+    .source-badge { padding:8px 11px; border-radius:5px; background:#e9ece3; color:#5c6d59; font-size:10px; font-weight:700; white-space:nowrap; margin-top:7px; }
+    .toolbar { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 0; border-top:1px solid var(--line); }
+    .location { display:flex; align-items:center; gap:8px; font-size:11px; font-weight:600; }
+    .location svg { width:15px; height:15px; color:#7b8679; }
+    .view-switch { display:flex; border:1px solid var(--line); border-radius:7px; padding:3px; gap:3px; background:#eeefe8; }
+    .view-switch button { border:0; padding:6px 10px; background:transparent; border-radius:4px; font-size:10px; color:var(--muted); }
+    .view-switch button[aria-pressed="true"] { background:var(--white); color:var(--ink); box-shadow:0 1px 3px #25362114; font-weight:650; }
+    .view-switch button:disabled { opacity:.45; cursor:not-allowed; }
+    .error { background:#fff0e8; color:#954628; border:1px solid #efc7b4; border-radius:8px; padding:12px 14px; font-size:12px; line-height:1.5; margin-bottom:13px; overflow-wrap:anywhere; }
+    .pair { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .scene { border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--white); min-width:0; }
+    .scene-top { display:flex; align-items:center; justify-content:space-between; padding:14px 15px; gap:10px; }
+    .scene-name { display:flex; gap:8px; align-items:center; font-weight:700; font-size:12px; }
+    .scene-name span { color:var(--muted); font-size:10px; font-weight:500; }
+    .scene-date { font-size:10px; color:var(--muted); }
+    .scene-visual { position:relative; aspect-ratio:1; background:#e7eae1; overflow:hidden; }
+    .scene-visual img { display:block; width:100%; height:100%; object-fit:contain; background:#17211c; }
+    .empty { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background-color:#e9ece4; background-image:linear-gradient(#81917b12 1px,transparent 1px),linear-gradient(90deg,#81917b12 1px,transparent 1px); background-size:32px 32px; text-align:center; padding:20px; }
+    .empty-ring { width:76px; height:76px; border:1px solid #bbc8b470; border-radius:50%; display:grid; place-items:center; outline:1px solid #bbc8b445; outline-offset:13px; margin-bottom:26px; color:#96a08e; }
+    .empty-ring svg { width:32px; height:32px; }
+    .empty strong { font-weight:600; font-size:12px; color:#677763; }
+    .empty p { color:#8b9584; font-size:10px; margin:7px 0 0; line-height:1.5; }
+    .scene-footer { min-height:81px; padding:14px 15px; }
+    .meta-line { display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:10px; color:var(--muted); }
+    .cloud { display:flex; gap:5px; align-items:center; }
+    .cloud svg { width:13px; height:13px; }
+    .scene-id { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:9px; margin-top:10px; color:#90988c; overflow-wrap:anywhere; line-height:1.5; }
+    .preview-note { display:flex; align-items:flex-start; gap:10px; border:1px solid #e2d8bd; background:#f9f5e9; border-radius:9px; padding:14px 15px; margin-top:18px; }
+    .preview-note svg { width:17px; height:17px; flex-shrink:0; color:#a88530; margin-top:1px; }
+    .preview-note strong { display:block; font-size:11px; font-weight:700; margin-bottom:5px; }
+    .preview-note p { font-size:11px; line-height:1.65; color:#82775f; margin:0; }
+    .footnote { display:flex; align-items:center; justify-content:space-between; gap:20px; color:#929a8c; font-size:10px; line-height:1.6; margin-top:16px; }
+    .footnote p { margin:0; }
+    .history-mark { white-space:nowrap; text-transform:uppercase; letter-spacing:1px; font-size:9px; }
+    .wipe-panel { border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--white); }
+    .wipe-visual { width:100%; aspect-ratio:1; position:relative; overflow:hidden; background:#17211c; }
+    .wipe-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+    .wipe-visual .wipe-after { clip-path:inset(0 0 0 50%); background:#17211c; }
+    .wipe-divider { position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--yellow); transform:translateX(-1px); pointer-events:none; }
+    .wipe-divider::after { content:'↔'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:34px; height:34px; display:grid; place-items:center; color:#443619; background:var(--yellow); border-radius:50%; font-size:19px; box-shadow:0 2px 12px #0003; }
+    .wipe-label { position:absolute; top:16px; border-radius:5px; padding:6px 9px; background:#19231fd9; color:#fff; font-size:10px; }
+    .wipe-label.left { left:16px; } .wipe-label.right { right:16px; }
+    .wipe-control { padding:14px 20px; display:flex; gap:15px; align-items:center; }
+    .wipe-control label { margin:0; white-space:nowrap; color:var(--muted); font-size:10px; }
+    .wipe-control input { height:25px; padding:0; border:0; accent-color:var(--yellow); }
+    .wipe-control output { min-width:30px; font-size:10px; color:var(--muted); }
+    .wipe-metadata { padding:0 20px 15px; display:grid; grid-template-columns:1fr 1fr; gap:20px; color:var(--muted); font-size:10px; line-height:1.6; }
+    .quality-warning { background:#fff3d9; color:#886018; border:1px solid #e9cd91; border-radius:8px; padding:11px 14px; font-size:12px; line-height:1.5; margin-bottom:13px; }
+    .analysis-panel { overflow:hidden; background:#202324; color:#f5f4ef; border:1px solid #313536; border-radius:12px; box-shadow:0 8px 30px #202b260c; }
+    .analysis-tabs { display:flex; gap:4px; padding:12px 16px 0; border-bottom:1px solid #373b3c; }
+    .analysis-tabs button { border:0; border-bottom:2px solid transparent; background:transparent; color:#a8aeac; padding:13px 20px; font-size:12px; font-weight:650; }
+    .analysis-tabs button[aria-selected="true"] { color:var(--yellow); border-bottom-color:var(--yellow); }
+    .analysis-tabs button:disabled { opacity:.45; cursor:not-allowed; }
+    .analysis-heading { display:flex; justify-content:space-between; align-items:center; gap:15px; padding:16px 20px; font-size:11px; }
+    .analysis-heading strong { font-size:12px; font-weight:650; }
+    .analysis-heading span { color:#a8aeac; }
+    .recent-button { border:1px solid var(--line); border-radius:6px; background:#f5f4ef; padding:8px 10px; font-size:11px; font-weight:600; color:var(--ink); margin:0 0 12px; }
+    .recent-button:disabled { opacity:.5; }
+    .experimental-control { padding:13px 20px; border-top:1px solid #373b3c; border-bottom:1px solid #373b3c; background:#2b2b25; }
+    .experimental-control label { display:flex; align-items:center; gap:9px; margin:0; color:#f0d09a; font-size:12px; }
+    .experimental-control input { width:16px; height:16px; margin:0; padding:0; accent-color:var(--yellow); }
+    .experimental-control p { color:#bdb8a9; margin:7px 0 0 25px; font-size:11px; line-height:1.5; }
+    .satellite-stage { position:relative; background:#131718; height:clamp(340px,59vh,640px); overflow:hidden; }
+    .satellite-stage img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+    .satellite-stage .change-base-dim { opacity:.35; }
+    .satellite-stage .change-overlay { image-rendering:pixelated; }
+    .stage-empty { position:absolute; inset:0; display:grid; align-content:center; justify-items:center; text-align:center; gap:12px; color:#a8aeac; padding:25px; background-image:linear-gradient(#aab7b00a 1px,transparent 1px),linear-gradient(90deg,#aab7b00a 1px,transparent 1px); background-size:40px 40px; }
+    .stage-empty strong { color:#d9dedb; font-size:16px; font-weight:600; }
+    .stage-empty p { max-width:330px; margin:0; font-size:12px; line-height:1.6; }
+    .stage-empty svg { width:42px; height:42px; color:var(--yellow); margin-bottom:8px; }
+    .change-pending { position:absolute; inset:0; display:grid; align-content:center; justify-items:center; padding:24px; text-align:center; background:#14181833; }
+    .change-pending-card { max-width:350px; padding:24px; border:1px solid #5b523b; border-radius:10px; background:#242727ed; box-shadow:0 8px 40px #0003; }
+    .change-pending strong { display:block; color:#ffcc70; font-size:15px; line-height:1.5; }
+    .change-pending p { color:#b6bcb8; font-size:12px; line-height:1.6; margin:10px 0 0; }
+    .analysis-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:48px; padding:13px 20px; border-top:1px solid #373b3c; font-size:11px; color:#aab2ad; }
+    .change-legend { display:flex; align-items:center; gap:8px; color:#ebd4a4; }
+    .change-legend i { width:10px; height:10px; border-radius:2px; background:var(--yellow); }
+    .analysis-footer .metric { color:#e2e5df; text-align:right; }
+    .observation-summary { display:grid; grid-template-columns:1fr 1fr; gap:22px; padding:16px 20px; border-top:1px solid #373b3c; }
+    .observation-summary h3 { font-size:11px; font-weight:600; color:#b7bdb8; margin:0 0 7px; }
+    .observation-summary time { color:#f3f2ea; font-size:12px; font-weight:600; }
+    .observation-summary p { color:#b9c0b9; font-size:10px; line-height:1.5; margin:7px 0 0; }
+    .observation-summary .scene-id { color:#858e88; font-size:9px; }
+    .split-panel .wipe-control { border-top:1px solid #373b3c; background:#25292a; }
+    .split-panel .wipe-control label,.split-panel .wipe-control output { color:#bac0bb; }
+    .split-panel .wipe-visual { aspect-ratio:auto; touch-action:none; cursor:ew-resize; }
+    .split-panel .wipe-after { background:#131718; }
+    .spinner { width:15px; height:15px; border:2px solid #6d571c40; border-top-color:#5d4815; border-radius:50%; animation:spin .8s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    @media (min-width:1600px) { .main { padding:36px 48px; } .pair { gap:23px; } }
+    @media (max-width:1100px) { .layout { grid-template-columns:292px minmax(0,1fr); } .rail { padding:25px 21px; } .main { padding:26px 23px; } .workspace-header h2 { font-size:24px; } .scene-top { padding:12px; flex-wrap:wrap; } .scene-footer { padding:12px; } .scene-name span { display:none; } .source-badge { font-size:9px; } }
+    @media (max-width:840px) { .layout { grid-template-columns:260px minmax(0,1fr); } .main { padding:23px 18px; } .rail { padding:24px 17px; } .workspace-header { flex-wrap:wrap; gap:5px; } .workspace-header h2 { font-size:23px; } .pair { gap:12px; grid-template-columns:1fr; } .scene-visual { aspect-ratio:1.4; } .toolbar { flex-wrap:wrap; } .footnote { flex-wrap:wrap; gap:8px; } .wipe-visual { aspect-ratio:1; } }
+    @media (max-width:600px) { .topbar { padding:0 19px; height:68px; } .brand { font-size:20px; gap:8px; } .brand-divider { margin:0 3px; } .product-name { font-size:11px; } .local-badge { font-size:8px; padding:7px 8px; } .layout { display:block; } .rail { border-right:0; border-bottom:1px solid var(--line); padding:23px 20px; } .rail h1 { font-size:24px; } .intro { margin-bottom:18px; } .field { margin-bottom:15px; } .periods { display:grid; grid-template-columns:1fr 1fr; gap:16px; } .period { margin-top:3px; padding-top:15px; } .date-row { grid-template-columns:1fr; gap:10px; } .date-row input { font-size:12px; } .connections { display:flex; flex-wrap:wrap; gap:5px 18px; margin-top:20px; padding-top:13px; } .connections .eyebrow { width:100%; } .connection { margin:5px 0; font-size:10px; } .connection small { display:none; } .main { padding:25px 20px; } .workspace-header { flex-wrap:nowrap; } .workspace-header h2 { font-size:24px; } .source-badge { padding:7px 8px; font-size:8px; } .pair { grid-template-columns:1fr 1fr; gap:10px; } .scene-visual { aspect-ratio:1; } .scene-top { gap:6px; padding:11px; } .scene-name { font-size:11px; } .scene-date { font-size:9px; } .empty { padding:10px; } .empty-ring { width:42px; height:42px; outline-offset:8px; margin-bottom:20px; } .empty-ring svg { width:24px; height:24px; } .empty strong { font-size:10px; } .empty p { font-size:9px; } .scene-footer { padding:11px; } .meta-line { flex-wrap:wrap; gap:6px; font-size:9px; } .scene-id { font-size:8px; } .wipe-metadata { gap:12px; font-size:9px; } }
+    @media (max-width:840px) { .analysis-tabs { padding:8px 8px 0; gap:0; } .analysis-tabs button { flex:1; padding:12px 5px; font-size:10px; } .analysis-heading { padding:14px; flex-wrap:wrap; gap:6px; } .satellite-stage { height:clamp(290px,48vh,500px); } .analysis-footer { padding:12px 14px; flex-wrap:wrap; } .observation-summary { padding:14px; gap:14px; } }
+    @media (max-width:600px) { .workspace-header { flex-wrap:wrap; } .analysis-tabs button { font-size:11px; padding:13px 5px; } .satellite-stage { height:360px; } .observation-summary { gap:14px; } .observation-summary .scene-id { font-size:8px; } .toolbar { padding:12px 0; } .analysis-heading { font-size:10px; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12.1 3c1.5 4.8-2.8 5.5-1.1 9 1.7-.7 2.9-2.1 3.1-4.1 3 2.5 5 5 4.2 8a6.4 6.4 0 0 1-12.5-.2C5.1 12 8.5 9.2 9 7.3c.8.7 1 1.4 1 2.2 1-2.1 1-4.2 2.1-6.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>FireGuard<span class="brand-divider"></span><span class="product-name">Satellite lab</span></div>
+    <div class="local-badge"><span></span>Local preview</div>
+  </header>
+  <div class="layout">
+    <aside class="rail">
+      <div class="eyebrow">Observation setup</div>
+      <h1>A closer look.</h1>
+      <p class="intro">Explore the same landscape across two historical satellite observations.</p>
+      <form id="preview-form">
+        <fieldset id="form-fields">
+          <div class="field"><label for="preset">Area of interest</label><select id="preset"><option value="sumatra">South Sumatra sample</option><option value="oki">OKI sample</option><option value="banyuasin">Banyuasin sample</option><option value="custom">Custom coordinates</option></select></div>
+          <div class="field"><label for="view-scale">View scale</label><select id="view-scale"><option value="area">Existing area</option><option value="neighborhood">Neighborhood (~2 km)</option></select><p class="help">Zoom the requested area around its current center.</p></div>
+          <div class="field"><label for="bbox">Bounding box</label><input class="bbox" id="bbox" name="bbox" value="[104.85, -3.35, 104.95, -3.25]" spellcheck="false" required aria-describedby="bbox-help"><p class="help" id="bbox-help">West, south, east, north · WGS 84 coordinates</p></div>
+          <button class="recent-button" id="recent-imagery" type="button" disabled>Recent imagery</button>
+          <div class="periods">
+            <section class="period"><div class="period-title"><span class="period-index">01</span>Before window</div><div class="date-row"><div><label for="before-start">From</label><input id="before-start" name="before_start" type="date" required></div><div><label for="before-end">To</label><input id="before-end" name="before_end" type="date" required></div></div></section>
+            <section class="period after"><div class="period-title"><span class="period-index">02</span>After window</div><div class="date-row"><div><label for="after-start">From</label><input id="after-start" name="after_start" type="date" required></div><div><label for="after-end">To</label><input id="after-end" name="after_end" type="date" required></div></div></section>
+          </div>
+          <button class="load" id="load-button" type="submit"><svg id="load-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7V4h3m10 0h3v3M4 17v3h3m10 0h3v-3M12 8v8m-4-4h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span id="load-text">Load satellite pair</span></button>
+        </fieldset>
+        <p class="request-note" id="request-note" role="status">Fetches historical Sentinel-2 imagery</p>
+      </form>
+      <div class="connections"><div class="eyebrow">Data connections</div><div class="connection"><span class="dot" id="imagery-dot"></span><div><span id="imagery-status">Checking imagery connection…</span><small id="imagery-detail">Sentinel-2 L2A</small></div></div><div class="connection"><span class="dot pending" id="model-dot"></span><div><span id="model-status">Checking U-Net model…</span><small id="model-detail">Loading model status</small></div></div><div class="connection"><span class="dot" id="firms-dot"></span><div><span id="firms-status">FIRMS key not configured</span><small>Active fire data is unavailable</small></div></div></div>
+    </aside>
+    <main class="main">
+      <div class="workspace-header"><div><div class="eyebrow">Historical imagery · change detection</div><h2>Satellite change analysis.</h2><p id="workspace-subtitle">Compare recent observations and inspect the actual acquisition dates.</p></div><span class="source-badge" id="source-badge">SENTINEL-2 L2A</span></div>
+      <div class="toolbar"><div class="location"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg><span id="location-label">South Sumatra sample</span></div><span class="history-mark">Same area · two dates</span></div>
+      <div id="error" class="error" role="alert" hidden></div>
+      <div id="quality-warning" class="quality-warning" role="status" hidden>Cloud or haze affects this pair. Try another date window for change analysis.</div>
+      <section class="analysis-panel" aria-label="Satellite analysis workspace">
+        <div class="analysis-tabs" role="tablist" aria-label="Satellite view">
+          <button id="before-view" type="button" role="tab" aria-selected="false" aria-controls="single-view" tabindex="-1">Before</button>
+          <button id="after-view" type="button" role="tab" aria-selected="true" aria-controls="single-view">After</button>
+          <button id="changes-view" type="button" role="tab" aria-selected="false" aria-controls="single-view" tabindex="-1">Changes</button>
+          <button id="split-view-button" type="button" role="tab" aria-selected="false" aria-controls="split-view" tabindex="-1" disabled>Split View</button>
+        </div>
+        <div class="analysis-heading"><strong id="view-title">After observation</strong><span id="view-date">Load a satellite pair to begin</span></div>
+        <div class="experimental-control" id="experimental-control" hidden><label for="experimental-output"><input id="experimental-output" type="checkbox" autocomplete="off">Show experimental U-Net output</label><p>Unvalidated candidate output. Do not use it for fire alerts; clouds and seasonal differences can produce misleading marks.</p></div>
+        <div id="single-view" class="satellite-stage" role="tabpanel" aria-labelledby="after-view">
+          <img id="before-image" alt="Before satellite observation" hidden>
+          <img id="after-image" alt="After satellite observation" hidden>
+          <img id="change-overlay" class="change-overlay" alt="Predicted change mask" hidden>
+          <div class="stage-empty" id="stage-empty"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8V4h4m8 0h4v4M4 16v4h4m8 0h4v-4M8 12h8m-4-4v8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><strong>See what changed.</strong><p>Load two satellite observations of the same area to explore the landscape over time.</p></div>
+          <div class="change-pending" id="change-pending" hidden><div class="change-pending-card"><strong id="change-pending-title">Model weights needed to detect changes</strong><p id="change-pending-detail">You can still inspect the Before, After, and Split View observations.</p></div></div>
+        </div>
+        <div class="split-panel" id="split-view" role="tabpanel" aria-labelledby="split-view-button" hidden>
+          <div class="satellite-stage wipe-visual" id="wipe-surface"><img id="wipe-before" alt="Before observation"><img class="wipe-after" id="wipe-after" alt="After observation"><div class="wipe-divider" id="wipe-divider"></div><span class="wipe-label left">Before</span><span class="wipe-label right">After</span></div>
+          <div class="wipe-control"><label for="wipe-slider">Reveal imagery</label><input id="wipe-slider" type="range" min="0" max="100" value="50" aria-label="Before and after comparison position"><output for="wipe-slider" id="wipe-output">50%</output></div>
+        </div>
+        <div class="analysis-footer"><span id="view-description">Choose an area and load a satellite pair.</span><span class="change-legend" id="change-legend" hidden><i aria-hidden="true"></i>Yellow · experimental candidate</span><span class="metric" id="change-metric" hidden></span></div>
+        <div class="observation-summary">
+          <div><h3>BEFORE</h3><time id="before-date">Awaiting imagery</time><p id="before-cloud">Selected-area quality —</p><p class="scene-id" id="before-scene">No scene loaded</p></div>
+          <div><h3>AFTER</h3><time id="after-date">Awaiting imagery</time><p id="after-cloud">Selected-area quality —</p><p class="scene-id" id="after-scene">No scene loaded</p></div>
+        </div>
+      </section>
+      <div class="preview-note"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 11v6m0-10v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><div><strong id="model-note-title">Satellite change detection</strong><p id="model-note-detail">Experimental U-Net output is hidden by default. It is unvalidated for this imagery and must not be used for fire alerts.</p></div></div>
+      <div class="footnote"><p id="resolution-note">Historical observations may include clouds, haze, and seasonal differences.</p><span class="history-mark">Research preview</span></div>
+    </main>
+  </div>
+  <script>
+    'use strict';
+    const $ = id => document.getElementById(id);
+    const presets = {
+      sumatra: { name: 'South Sumatra sample', bbox: [104.85, -3.35, 104.95, -3.25] },
+      oki: { name: 'OKI sample', bbox: [105.1, -3.6, 105.2, -3.5] },
+      banyuasin: { name: 'Banyuasin sample', bbox: [104.5, -2.8, 104.6, -2.7] }
+    };
+    const viewButtons = {before: 'before-view', after: 'after-view', changes: 'changes-view', split: 'split-view-button'};
+    let currentPreview = null;
+    let currentView = 'after';
+    let requestVersion = 0;
+    let formEdited = false;
+    let existingBox = null;
+    let defaultRequest = null;
+    const isNumber = value => typeof value === 'number' && Number.isFinite(value);
+    const percent = value => isNumber(value) ? `${value.toFixed(1)}%` : 'unavailable';
+    const formatDate = value => {
+      if (!value) return 'Date unavailable';
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? String(value) : new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(date);
+    };
+    const qualityText = scene => isNumber(scene.quality?.clear_percent) ? `${percent(scene.quality.clear_percent)} clear in selected area` : 'Selected-area quality unavailable';
+    function showError(message) { $('error').textContent = message; $('error').hidden = false; }
+    function clearError() { $('error').textContent = ''; $('error').hidden = true; }
+    function setImageryStatus(status) {
+      const state = status === 'connected' ? ['Imagery connected', 'good', 'Sentinel-2 L2A · connection verified'] : status === 'error' ? ['Imagery connection unavailable', 'bad', 'Check the request error and try again'] : ['Imagery connection not tested', 'pending', 'Load a pair to test imagery access'];
+      $('imagery-status').textContent = state[0]; $('imagery-dot').className = `dot ${state[1]}`; $('imagery-detail').textContent = state[2];
+    }
+    function setModelStatus(model, change) {
+      const available = Boolean(model?.available || change?.available);
+      $('model-status').textContent = available ? 'U-Net model ready' : 'U-Net inference unavailable';
+      $('model-dot').className = `dot ${available ? 'good' : 'pending'}`;
+      $('model-detail').textContent = change?.available ? 'Experimental output available' : available ? 'Ready to analyze a satellite pair' : 'Check model availability on the server';
+      $('model-note-title').textContent = available ? 'Experimental U-Net output' : 'Change analysis unavailable';
+      $('model-note-detail').textContent = available ? 'The model output is unvalidated for this satellite imagery and must not be used for fire alerts. It is hidden by default; inspect it only by enabling the experimental output in Changes.' : 'Before, After, and Split View remain available. Experimental model output will be available once the model can run.';
+    }
+    function setView(view) {
+      if (!(view in viewButtons) || (view === 'split' && !currentPreview)) return;
+      currentView = view;
+      for (const [name, id] of Object.entries(viewButtons)) { $(id).setAttribute('aria-selected', String(name === view)); $(id).tabIndex = name === view ? 0 : -1; }
+      $('single-view').hidden = view === 'split'; $('split-view').hidden = view !== 'split';
+      $('single-view').setAttribute('aria-labelledby', viewButtons[view]);
+      const changes = view === 'changes';
+      const available = Boolean(currentPreview?.change?.available && currentPreview.change.overlay_url);
+      const showOutput = changes && available && $('experimental-output').checked;
+      $('experimental-control').hidden = !changes;
+      $('experimental-output').disabled = !available;
+      $('before-image').hidden = !currentPreview || view !== 'before';
+      $('after-image').hidden = !currentPreview || !['after', 'changes'].includes(view);
+      $('after-image').classList.toggle('change-base-dim', changes && !available);
+      $('change-overlay').hidden = !showOutput;
+      $('stage-empty').hidden = Boolean(currentPreview);
+      $('change-pending').hidden = !currentPreview || !changes || available;
+      $('change-legend').hidden = !showOutput;
+      const change = currentPreview?.change;
+      const metrics = showOutput && isNumber(change.changed_percent) ? `${percent(change.changed_percent)} flagged by experimental model${isNumber(change.valid_percent) ? ` · ${percent(change.valid_percent)} of area analyzed` : ''}` : '';
+      $('change-metric').textContent = metrics; $('change-metric').hidden = !showOutput || !metrics;
+      $('view-title').textContent = {before:'Before observation', after:'After observation', changes:'Experimental change output', split:'Compare observations'}[view];
+      $('view-date').textContent = !currentPreview ? 'Load a satellite pair to begin' : ['before', 'after'].includes(view) ? formatDate(currentPreview[view].acquired_at) : `${formatDate(currentPreview.before.acquired_at)} → ${formatDate(currentPreview.after.acquired_at)}`;
+      $('view-description').textContent = !currentPreview ? 'Choose an area and load a satellite pair.' : changes ? available ? showOutput ? `${change.method || 'Model'} · unvalidated candidate output` : 'After imagery · experimental output is hidden.' : 'No change output is available for this pair.' : view === 'split' ? 'Drag the image divider or use the slider to compare.' : qualityText(currentPreview[view]);
+    }
+    function updateLocation(bbox) {
+      const preset = Object.entries(presets).find(([, item]) => item.bbox.every((value, index) => value === bbox[index]));
+      $('location-label').textContent = preset ? preset[1].name : 'Custom area of interest';
+      return preset ? preset[0] : 'custom';
+    }
+    async function preparedImage(id, url, alt) {
+      const image = new Image(); image.decoding = 'async'; image.src = url;
+      try { await image.decode(); } catch { throw new Error(`The ${alt} could not be displayed. The previous imagery pair has been preserved.`); }
+      image.id = id; image.alt = alt;
+      const previous = $(id); image.className = previous.className; image.style.cssText = previous.style.cssText;
+      return image;
+    }
+    async function displayPreview(data, cached = false, version = requestVersion) {
+      if (!data || !data.before?.image_url || !data.after?.image_url || !Array.isArray(data.bbox) || data.bbox.length !== 4) throw new Error('The local server returned an incomplete imagery pair. Try loading the pair again.');
+      if (data.change?.available && !data.change.overlay_url) throw new Error('The analysis did not include its change overlay. Try loading the pair again.');
+      const images = await Promise.all([
+        preparedImage('before-image', data.before.image_url, `before observation, ${formatDate(data.before.acquired_at)}`),
+        preparedImage('after-image', data.after.image_url, `after observation, ${formatDate(data.after.acquired_at)}`),
+        preparedImage('wipe-before', data.before.image_url, 'before observation'),
+        preparedImage('wipe-after', data.after.image_url, 'after observation'),
+        ...(data.change?.available ? [preparedImage('change-overlay', data.change.overlay_url, 'predicted change overlay')] : [])
+      ]);
+      if (version !== requestVersion || (cached && formEdited)) return false;
+      // Swap already-decoded images together so dates and overlays never describe an older pair.
+      for (const image of images) $(image.id).replaceWith(image);
+      currentPreview = data;
+      $('experimental-output').checked = false;
+      for (const period of ['before', 'after']) {
+        const scene = data[period];
+        $(`${period}-date`).textContent = formatDate(scene.acquired_at);
+        if (scene.acquired_at) $(`${period}-date`).setAttribute('datetime', scene.acquired_at); else $(`${period}-date`).removeAttribute('datetime');
+        $(`${period}-cloud`).textContent = qualityText(scene);
+        $(`${period}-cloud`).title = `Reference-tile cloud cover: ${percent(scene.cloud_cover)} · Selected-area coverage: ${percent(scene.quality?.coverage_percent)}`;
+        $(`${period}-scene`).textContent = scene.mosaic === 'daily' ? 'Daily observation · same aligned area' : `Reference scene · ${scene.scene_id || 'identifier unavailable'}`;
+      }
+      $('source-badge').textContent = (data.source || 'Satellite imagery').toUpperCase();
+      $('workspace-subtitle').textContent = 'Inspect the actual observation dates or compare with Split View.';
+      $('resolution-note').textContent = data.resolution_note || 'Historical observations may include clouds, haze, and seasonal differences.';
+      $('quality-warning').hidden = !['before', 'after'].some(period => isNumber(data[period].quality?.clear_percent) && data[period].quality.clear_percent < 70);
+      const reason = data.change?.reason;
+      const needsWeights = !data.model?.available && (!reason || /weight|missing|not.configured/i.test(reason));
+      $('change-pending-title').textContent = needsWeights ? 'Model weights needed to detect changes' : 'Change analysis unavailable for this pair';
+      $('change-pending-detail').textContent = reason && !needsWeights ? String(reason).replaceAll('_', ' ') : 'You can still inspect the Before, After, and Split View observations.';
+      $('bbox').value = JSON.stringify(data.bbox);
+      $('preset').value = updateLocation(data.bbox);
+      if (cached) { $('view-scale').value = 'area'; existingBox = null; }
+      if (data.request) for (const key of ['before_start', 'before_end', 'after_start', 'after_end']) if (typeof data.request[key] === 'string') $(key.replace('_', '-')).value = data.request[key];
+      $('split-view-button').disabled = false;
+      $('request-note').textContent = cached ? 'Showing a locally cached satellite analysis' : 'Satellite pair loaded · observation dates shown below';
+      setModelStatus(data.model, data.change);
+      setView('after');
+      return true;
+    }
+    $('preview-form').addEventListener('input', () => { formEdited = true; });
+    $('experimental-output').addEventListener('change', () => setView(currentView));
+    function applyRecentDates(includeArea = false) {
+      if (!defaultRequest) return;
+      for (const key of ['before_start', 'before_end', 'after_start', 'after_end']) $(key.replace('_', '-')).value = defaultRequest[key];
+      if (includeArea && Array.isArray(defaultRequest.bbox)) {
+        $('bbox').value = JSON.stringify(defaultRequest.bbox);
+        $('preset').value = updateLocation(defaultRequest.bbox);
+        $('view-scale').value = 'area'; existingBox = null;
+      }
+      $('request-note').textContent = 'Recent date windows selected · click Load satellite pair';
+    }
+    $('recent-imagery').addEventListener('click', () => {
+      formEdited = true; clearError(); applyRecentDates();
+      $('experimental-output').checked = false; setView('after');
+    });
+    $('preset').addEventListener('change', event => {
+      formEdited = true; $('view-scale').value = 'area'; existingBox = null;
+      if (presets[event.target.value]) $('bbox').value = JSON.stringify(presets[event.target.value].bbox);
+    });
+    $('bbox').addEventListener('input', () => { $('preset').value = 'custom'; $('view-scale').value = 'area'; existingBox = null; });
+    $('view-scale').addEventListener('change', event => {
+      formEdited = true;
+      if (event.target.value === 'area') { if (existingBox) $('bbox').value = JSON.stringify(existingBox); existingBox = null; return; }
+      let box;
+      try { box = JSON.parse($('bbox').value); } catch { box = null; }
+      if (!Array.isArray(box) || box.length !== 4 || !box.every(isNumber) || box[0] >= box[2] || box[1] >= box[3]) { event.target.value = 'area'; showError('Enter a valid bounding box before choosing a neighborhood view.'); return; }
+      existingBox = [...box];
+      const longitude = (box[0] + box[2]) / 2, latitude = (box[1] + box[3]) / 2;
+      $('bbox').value = JSON.stringify([longitude - .01, latitude - .01, longitude + .01, latitude + .01].map(value => Number(value.toFixed(6))));
+      $('preset').value = 'custom';
+    });
+    for (const [view, id] of Object.entries(viewButtons)) {
+      $(id).addEventListener('click', () => setView(view));
+      $(id).addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const enabled = Object.keys(viewButtons).filter(name => !$(viewButtons[name]).disabled);
+        const index = enabled.indexOf(currentView);
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? enabled.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + enabled.length) % enabled.length;
+        setView(enabled[next]); $(viewButtons[enabled[next]]).focus();
+      });
+    }
+    function updateSplit(position) {
+      const value = Math.max(0, Math.min(100, Number(position)));
+      $('wipe-slider').value = value; $('wipe-after').style.clipPath = `inset(0 0 0 ${value}%)`;
+      $('wipe-divider').style.left = `${value}%`; $('wipe-output').value = `${Math.round(value)}%`;
+    }
+    $('wipe-slider').addEventListener('input', event => updateSplit(event.target.value));
+    function splitAtPointer(event) { const bounds = $('wipe-surface').getBoundingClientRect(); updateSplit((event.clientX - bounds.left) / bounds.width * 100); }
+    $('wipe-surface').addEventListener('pointerdown', event => { if (event.button !== 0) return; $('wipe-surface').setPointerCapture(event.pointerId); splitAtPointer(event); });
+    $('wipe-surface').addEventListener('pointermove', event => { if ($('wipe-surface').hasPointerCapture(event.pointerId)) splitAtPointer(event); });
+    $('wipe-surface').addEventListener('pointerup', event => { if ($('wipe-surface').hasPointerCapture(event.pointerId)) $('wipe-surface').releasePointerCapture(event.pointerId); });
+    async function refreshStatus() {
+      try {
+        const response = await fetch('/api/status', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Status unavailable');
+        const status = await response.json(); setImageryStatus(status.sentinel?.status || 'not_tested');
+        setModelStatus(status.model, currentPreview?.change);
+        if (status.default_request && ['before_start', 'before_end', 'after_start', 'after_end'].every(key => typeof status.default_request[key] === 'string')) {
+          defaultRequest = status.default_request; $('recent-imagery').disabled = false;
+        }
+        return status;
+      } catch { setImageryStatus('error'); $('imagery-detail').textContent = 'Connection status could not be loaded'; return null; }
+    }
+    $('preview-form').addEventListener('submit', async event => {
+      event.preventDefault(); clearError();
+      let bbox;
+      try { bbox = JSON.parse($('bbox').value); } catch { showError('Enter a bounding box as four numbers: [west, south, east, north].'); return; }
+      if (!Array.isArray(bbox) || bbox.length !== 4 || !bbox.every(isNumber) || bbox[0] >= bbox[2] || bbox[1] >= bbox[3] || bbox[0] < -180 || bbox[2] > 180 || bbox[1] < -90 || bbox[3] > 90) { showError('Use a valid bounding box: [west, south, east, north], with west smaller than east and south smaller than north.'); return; }
+      const body = { bbox, before_start: $('before-start').value, before_end: $('before-end').value, after_start: $('after-start').value, after_end: $('after-end').value };
+      if (body.before_start > body.before_end || body.after_start > body.after_end) { showError('Each date window must end on or after its start date.'); return; }
+      if (body.before_end >= body.after_start) { showError('The before window must end before the after window starts.'); return; }
+      const version = ++requestVersion; formEdited = true;
+      $('form-fields').disabled = true; $('load-text').textContent = 'Preparing satellite analysis…'; $('load-icon').hidden = true;
+      const spinner = document.createElement('span'); spinner.className = 'spinner'; spinner.setAttribute('aria-hidden', 'true'); $('load-button').prepend(spinner);
+      $('request-note').textContent = 'Finding scenes and running available analysis. This may take a moment.';
+      try {
+        const response = await fetch('/api/preview', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        const data = await response.json().catch(() => { throw new Error('The local server returned an unreadable response. Please try again.'); });
+        if (!response.ok || data.error) throw new Error(data.error || `The imagery request failed (${response.status}).`);
+        await displayPreview(data, false, version); setImageryStatus('connected');
+      } catch (error) {
+        showError(error.message || 'Unable to load imagery. Check the local server and try again.');
+        $('request-note').textContent = currentPreview ? 'Previous imagery pair remains available' : 'Imagery could not be loaded';
+        await refreshStatus();
+      } finally {
+        $('form-fields').disabled = false; $('load-text').textContent = 'Load satellite pair'; $('load-icon').hidden = false; spinner.remove();
+      }
+    });
+    async function initialize() {
+      const version = requestVersion;
+      const status = await refreshStatus();
+      if (version !== requestVersion || formEdited) return;
+      applyRecentDates(true);
+      const cachedDate = status?.cached_preview?.after?.acquired_at?.slice(0, 10);
+      const recentCache = defaultRequest && cachedDate && cachedDate >= defaultRequest.after_start;
+      if (status?.cached_preview && recentCache) {
+        try { await displayPreview(status.cached_preview, true, version); } catch (error) { showError(error.message); $('request-note').textContent = 'Cached imagery could not be displayed'; }
+      }
+    }
+    initialize();
+  </script>
+</body>
+</html>

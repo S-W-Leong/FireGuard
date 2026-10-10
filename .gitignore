@@ -4,3 +4,9 @@ __pycache__/
 data/raw/
 data/probe/
 scripts/
+.env
+.env.*
+!.env.example
+satellite_app/cache/
+*.download
+.superpowers/
