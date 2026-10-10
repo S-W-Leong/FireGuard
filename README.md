@@ -1,7 +1,7 @@
 # FireGuard
 
 Historical decision support for preventive fire monitoring in South Sumatra.
-Choose a week, one exposure type and a team budget. The dashboard ranks cells
+Choose a week, an exposure mode and a team budget. The dashboard ranks cells
 by model risk × exposure and compares the selections with subsequent satellite
 detections and the same-budget baselines.
 
@@ -30,12 +30,26 @@ deployment has not been created. For Streamlit hosting, the entrypoint is
 
 ## What the prototype does
 
-- Select population, annual cropland or closed-canopy oil palm separately.
+- Combine population, annual cropland and closed-canopy oil palm with adjustable
+  policy weights, or inspect each exposure separately.
 - Inspect actual FWI, model risk, exposure and top-K priorities on the map.
 - Review and download the weekly monitoring plan; inspect a cell's inputs.
 - Compare selected-week or pooled yearly capture against FWI and fire-history
   baselines. Reveal subsequent detection cells explicitly in evaluation.
 - Read the actual model features, source dates and evaluation limits.
+
+Combined exposure starts at **50% population, 25% annual cropland and 25% oil
+palm**. Each criterion is divided by its fixed total across the 949 eligible
+cells before weighting. The population-emphasis slider assigns the remaining
+weight to agriculture; the second slider splits that agricultural weight
+between cropland and oil palm. Weights always sum to 100%. These are declared
+policy assumptions, not learned model parameters or percentages of teams.
+
+The evaluation tab reports capture for each exposure on the same selected
+plan and compares selected-week portfolios under people-focused, balanced and
+agriculture-focused policies. The CSV records weights, normalization totals,
+cell shares and weighted contributions. Cropland and oil palm remain distinct
+measurements because their map dates differ and their areas can overlap.
 
 
 ## Model and data handoff
