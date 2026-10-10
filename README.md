@@ -5,6 +5,8 @@ Choose a week, an exposure mode and a team budget. The dashboard ranks cells
 by model risk × exposure and compares the selections with subsequent satellite
 detections and the same-budget baselines.
 
+Deployed streamlit app: https://fireguard-dormathon2026.streamlit.app
+
 Slide deck: https://docs.google.com/presentation/d/1Ql-1rDRBUJ0d9HOS4g9CZxMMpah97w7f/edit?usp=sharing&ouid=113779798155208176962&rtpof=true&sd=true 
 
 Full documentation: https://drive.google.com/file/d/1Jm4-6QpYkuTZGPY7-C1otvjOFN34Ef_M/view?usp=sharing 
