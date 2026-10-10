@@ -40,9 +40,10 @@ deployment has not been created. For Streamlit hosting, the entrypoint is
 
 Combined exposure starts at **50% population, 25% annual cropland and 25% oil
 palm**. Each criterion is divided by its fixed total across the 949 eligible
-cells before weighting. The population-emphasis slider assigns the remaining
-weight to agriculture; the second slider splits that agricultural weight
-between cropland and oil palm. Weights always sum to 100%. These are declared
+cells before weighting. Three direct sliders control population, cropland and
+oil palm. Moving one redistributes the remaining weight proportionally between
+the other two, rounded to whole percentages; if both are zero, the remainder
+is split equally. Weights always sum to 100%. These are declared
 policy assumptions, not learned model parameters or percentages of teams.
 
 The evaluation tab reports capture for each exposure on the same selected

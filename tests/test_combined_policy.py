@@ -109,6 +109,18 @@ def test_combined_streamlit_sliders_update_queue_and_keep_risk_scores():
     app = AppTest.from_file(str(Path(__file__).parents[1] / "app.py"), default_timeout=30).run()
     app.selectbox(key="exposure").select("Combined exposure").run()
     assert not app.exception
+    def slider_weights():
+        return tuple(app.slider(key=key).value for key in
+                     ("population_weight", "cropland_weight", "oil_palm_weight"))
+
+    assert slider_weights() == (50, 25, 25)
+    app.slider(key="population_weight").set_value(60).run()
+    assert slider_weights() == (60, 20, 20)
+    app.slider(key="cropland_weight").set_value(45).run()
+    assert slider_weights() == (41, 45, 14)
+    app.slider(key="oil_palm_weight").set_value(70).run()
+    assert slider_weights() == (14, 16, 70)
+    assert not app.exception
     initial = app.dataframe[0].value
     assert len(initial) == 50
     assert (initial["Risk × exposure"] > 0).all()
@@ -117,6 +129,7 @@ def test_combined_streamlit_sliders_update_queue_and_keep_risk_scores():
     baseline = app.dataframe[1].value
     initial_capture = baseline.loc[baseline.Strategy == "FireGuard × exposure", "Population capture"].iloc[0]
     app.slider(key="population_weight").set_value(100).run()
+    assert slider_weights() == (100, 0, 0)
     assert not app.exception
     revised = app.dataframe[0].value
     assert revised.Cell.tolist() != old_ids
@@ -125,6 +138,11 @@ def test_combined_streamlit_sliders_update_queue_and_keep_risk_scores():
     new_baseline = app.dataframe[1].value
     assert new_baseline.loc[new_baseline.Strategy == "FireGuard × exposure", "Population capture"].iloc[0] != initial_capture
     app.slider(key="population_weight").set_value(0).run()
+    assert slider_weights() == (0, 50, 50)
     app.slider(key="cropland_weight").set_value(100).run()
+    assert slider_weights() == (0, 100, 0)
+    app.selectbox(key="exposure").select("Population").run()
+    app.selectbox(key="exposure").select("Combined exposure").run()
+    assert slider_weights() == (0, 100, 0)
     assert not app.exception
     assert len(app.dataframe[0].value) == 50

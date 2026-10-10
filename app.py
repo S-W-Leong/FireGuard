@@ -40,6 +40,20 @@ def pct(value):
     return "Undefined" if pd.isna(value) else f"{value:.1%}"
 
 
+WEIGHT_KEYS = {"Population": "population_weight", "Annual cropland": "cropland_weight",
+               "Closed-canopy oil palm": "oil_palm_weight"}
+
+
+def rebalance_policy_weights(changed_key):
+    """Keep the edited percentage; distribute the remainder in the existing ratio."""
+    others = [key for key in WEIGHT_KEYS.values() if key != changed_key]
+    remainder = 100 - st.session_state[changed_key]
+    previous_total = sum(st.session_state[key] for key in others)
+    first = round(remainder * st.session_state[others[0]] / previous_total) if previous_total else round(remainder / 2)
+    st.session_state[others[0]] = first
+    st.session_state[others[1]] = remainder - first
+
+
 def map_figure(frame, grid, view, exposure_column, k, reveal=False):
     """Clipped decision cells, with markers at representative cell coordinates."""
     combined = exposure_column == "exposure_index"
@@ -120,15 +134,24 @@ with st.sidebar:
     combined = exposure_mode == COMBINED_MODE
     weights = None
     if combined:
-        population_weight = st.slider("Population emphasis (%)", 0, 100, 50, 5, key="population_weight",
-            help="The remaining emphasis goes to agriculture. This weights the index, not the share of teams.") / 100
-        cropland_weight = st.slider("Cropland share of agriculture (%)", 0, 100, 50, 5, key="cropland_weight",
-            disabled=population_weight == 1, help="The rest of the agricultural emphasis goes to closed-canopy oil palm.") / 100
-        weights = {"Population": population_weight,
-                   "Annual cropland": (1 - population_weight) * cropland_weight,
-                   "Closed-canopy oil palm": (1 - population_weight) * (1 - cropland_weight)}
+        if not st.session_state.get("_direct_exposure_weights", False):
+            # Preserve the policy of an already-open session using the old nested controls.
+            population = st.session_state.get("population_weight", 50)
+            cropland = round((100 - population) * st.session_state.get("cropland_weight", 50) / 100)
+            st.session_state.population_weight = population
+            st.session_state.cropland_weight = cropland
+            st.session_state.oil_palm_weight = 100 - population - cropland
+            st.session_state._direct_exposure_weights = True
+        weights = {}
+        for criterion, key in WEIGHT_KEYS.items():
+            weights[criterion] = st.slider(f"{criterion} weight (%)", 0, 100, step=1, key=key,
+                on_change=rebalance_policy_weights, args=(key,), persist_state="session",
+                help="Changing this weight adjusts the other two proportionally to keep a 100% total. "
+                     "This weights the exposure index, not the share of teams.") / 100
         st.caption(f"Population {weights['Population']:.1%} · Cropland {weights['Annual cropland']:.1%} · "
                    f"Oil palm {weights['Closed-canopy oil palm']:.1%}")
+        st.caption("Total: 100%. Moving one slider adjusts the other two in their existing ratio, rounded to whole percentages. "
+                   "If both are zero, the remainder is split equally.")
         st.caption("These are policy assumptions. The balanced starting point is 50% population and 50% agriculture.")
     k = st.slider("Available monitoring teams (K)", 1, 200, 50, key="budget",
                   help="One equal-cost cell inspection per team during the selected week. Travel routing is not modeled.")
