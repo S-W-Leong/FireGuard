@@ -1,6 +1,10 @@
 .DS_Store
 .venv/
 __pycache__/
+# Pitch deck temporary builds, renders, and validation artifacts
+/.submission-build/
+/output/submission/FireGuard_Submission_Final.pdf
+/output/submission/FireGuard_Submission_Final.pptx
 data/raw/
 data/probe/
 scripts/
