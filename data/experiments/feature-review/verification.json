@@ -1,0 +1,21 @@
+{
+  "validation_rows_verified": 49452,
+  "development_year": 2023,
+  "future_rows_excluded": 49920,
+  "revised_2024_evaluation_performed": false,
+  "independently_recomputed_profile_baseline_subset_combinations": 24,
+  "training_scaler_means_verified": true,
+  "portable_model_max_absolute_errors": {
+    "fwi_only": 1.1796119636642288e-16,
+    "fwi_and_history": 2.220446049250313e-16,
+    "weather_history_windows": 2.220446049250313e-16,
+    "without_coordinates": 2.220446049250313e-16,
+    "without_season": 2.220446049250313e-16,
+    "original_full": 2.220446049250313e-16,
+    "location_season_only": 1.1102230246251565e-16,
+    "history_only": 2.220446049250313e-16
+  },
+  "original_classifier_coefficients_and_intercept_reproduced_exactly": true,
+  "original_artifacts_match_retained_copies": true,
+  "tests_passed": 21
+}

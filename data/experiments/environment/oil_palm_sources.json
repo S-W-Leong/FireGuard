@@ -1,0 +1,500 @@
+{
+  "files": [
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2004.tif",
+      "bytes": 2463028,
+      "sha256": "56182fcaf8b8d1e6f9e35d35a113a060eba79243d04078358d540c7bf6c50717"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2005.tif",
+      "bytes": 1997442,
+      "sha256": "5a16f8e91653debe8757625a8b39d7258b8158a4c9772230db7edcddb04cfb1f"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2023.tif",
+      "bytes": 2287722,
+      "sha256": "ef4aec7d9fb5706ca18ea93cfb7926000b672d4981a89347b3a266d413c7df12"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2024.tif",
+      "bytes": 2187506,
+      "sha256": "a18f4be8164848d75d6889261fb6f30ad21c8f66a847b19fe60c04bf6df29fb8"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2025.tif",
+      "bytes": 2638876,
+      "sha256": "2a23f14cac0d3d51463ea952b9e4e2f7a6589625b5934bdf7823c49431c8906c"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2042.tif",
+      "bytes": 1721984,
+      "sha256": "35b652ff3c65b0dd4abe1ce696ba15796bf639213057cb50f45f9d134f5a088e"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2043.tif",
+      "bytes": 1912336,
+      "sha256": "5cf811c648a6444a0ddd669154ef0319d14a9e0b233e7b58e89bc098bdcf83cc"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2044.tif",
+      "bytes": 2534682,
+      "sha256": "fad3cf5041517e1bb3ec272f52f347a943a4ca14e27d8b07efbcf46646ed6718"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2045.tif",
+      "bytes": 2892126,
+      "sha256": "bcc25870391426d27f111eec61a195d17925228b2c855ab43e1e888a89952b1a"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2046.tif",
+      "bytes": 3173664,
+      "sha256": "2dd1db69a07404293f37f4c37c0729a671d9b4c830cbe946d6db2be06f26439e"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2060.tif",
+      "bytes": 2136876,
+      "sha256": "7dd02b489146f17b2b1673885d65353e390ba3f906d7357fae3974b7b1eeb97c"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2061.tif",
+      "bytes": 2377000,
+      "sha256": "cc5b0847150cd5c066a97dfc45b999e1927d4fba8747a85a60d3d0793458ec76"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2062.tif",
+      "bytes": 2266464,
+      "sha256": "61906370923f96096fdc040e9bcf224afedf38ce3302a4f52a140efb7e32810f"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2063.tif",
+      "bytes": 2408340,
+      "sha256": "982ba1dc5065bffa737ebc14ec1df42eaba16cd4dcb312c26f274fbf935bbfe4"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2064.tif",
+      "bytes": 1756110,
+      "sha256": "ee3daf9dab0d2feb1c17c2be1f4f17aad1c70ffaa27295582c7ccbbe73045518"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2082.tif",
+      "bytes": 2344648,
+      "sha256": "4aa11a629822c4f7b8dded1332efca091b22ae4970b240bb4b883aab027ba91c"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2083.tif",
+      "bytes": 1802546,
+      "sha256": "33faaae8cece61fde5d4d2281dc070e71f84253cf343be2719abcdb2a164deb1"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2084.tif",
+      "bytes": 2523628,
+      "sha256": "9d8a6a007664eadeb4b745b50c6967a7092cc85a10e8f51ed708739c6dcfe824"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2101.tif",
+      "bytes": 1806250,
+      "sha256": "bf9ea7ac3a8fe20a69f4d34ef461e8ee76fb1d5257c190d4a2ea5539587e502a"
+    }
+  ],
+  "rasters": [
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2004.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        101.50504569755692,
+        -3.5978425444270954,
+        102.41252379757447,
+        -2.6903644444095547
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2005.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        101.50504569755692,
+        -2.699527260307574,
+        102.41252379757447,
+        -1.7920491602900335
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2023.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        102.40336098167644,
+        -4.496157828546617,
+        103.31083908169398,
+        -3.5886797285290766
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2024.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        102.40336098167644,
+        -3.5978425444270954,
+        103.31083908169398,
+        -2.6903644444095547
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2025.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        102.40336098167644,
+        -2.699527260307574,
+        103.31083908169398,
+        -1.7920491602900335
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2042.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        103.30167626579596,
+        -5.394473112666138,
+        104.2091543658135,
+        -4.486995012648598
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2043.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        103.30167626579596,
+        -4.496157828546617,
+        104.2091543658135,
+        -3.5886797285290766
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2044.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        103.30167626579596,
+        -3.5978425444270954,
+        104.2091543658135,
+        -2.6903644444095547
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2045.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        103.30167626579596,
+        -2.699527260307574,
+        104.2091543658135,
+        -1.7920491602900335
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2046.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        103.30167626579596,
+        -1.8012119761880525,
+        104.2091543658135,
+        -0.8937338761705119
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2060.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        104.19999154991548,
+        -5.394473112666138,
+        105.10746964993302,
+        -4.486995012648598
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2061.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        104.19999154991548,
+        -4.496157828546617,
+        105.10746964993302,
+        -3.5886797285290766
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2062.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        104.19999154991548,
+        -3.5978425444270954,
+        105.10746964993302,
+        -2.6903644444095547
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2063.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        104.19999154991548,
+        -2.699527260307574,
+        105.10746964993302,
+        -1.7920491602900335
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2064.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        104.19999154991548,
+        -1.8012119761880525,
+        105.10746964993302,
+        -0.8937338761705119
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2082.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        105.098306834035,
+        -4.496157828546617,
+        106.00578493405254,
+        -3.5886797285290766
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2083.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        105.098306834035,
+        -3.5978425444270954,
+        106.00578493405254,
+        -2.6903644444095547
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2084.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        105.098306834035,
+        -2.699527260307574,
+        106.00578493405254,
+        -1.7920491602900335
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/oil_palm_2019_tiles/L2_2019b_2101.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        105.99662211815452,
+        -3.5978425444270954,
+        106.90410021817206,
+        -2.6903644444095547
+      ],
+      "shape": [
+        10102,
+        10102
+      ],
+      "pixel_size": [
+        8.983152841195215e-05,
+        8.983152841195215e-05
+      ],
+      "nodata": null,
+      "semantic_nodata": 0,
+      "author_core_footprint_used": true
+    }
+  ]
+}

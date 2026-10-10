@@ -1,0 +1,19 @@
+{
+  "input_grid": {
+    "path": "data/probe/grid.geojson",
+    "bytes": 470623,
+    "sha256": "0de24e713f1482019701d3f8241ace9c320dbebdd3d355161f6f6f2e4d3e1ec2"
+  },
+  "input_weekly": {
+    "path": "data/probe/fwi_weekly_joined.csv",
+    "bytes": 22574111,
+    "sha256": "d55308e79ef528a111e579612845abeb8b6b29f4e0406f45eb5909db6f757e01"
+  },
+  "original_model": {
+    "path": "data/experiments/logistic-v1/model.json",
+    "bytes": 1590,
+    "sha256": "fd9f7e7a6a3de9d486c6f29353bc3c48c6f6e565dab2a1644c95cc36de975eeb"
+  },
+  "acquisition_only": true,
+  "training_performed": false
+}

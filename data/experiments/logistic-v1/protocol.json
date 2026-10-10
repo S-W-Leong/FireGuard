@@ -1,0 +1,89 @@
+{
+  "experiment": "logistic-v1",
+  "seed": 17,
+  "inputs": {
+    "weekly_table": "data/probe/fwi_weekly_joined.csv",
+    "weekly_sha256": "d55308e79ef528a111e579612845abeb8b6b29f4e0406f45eb5909db6f757e01",
+    "grid": "data/probe/grid_exposure.csv",
+    "grid_sha256": "a2a14c0c687939f3cec6057ffe0f7bb4683081f43f3d417e9447fcb1701612fd"
+  },
+  "software": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scikit_learn": "1.7.2"
+  },
+  "splits": {
+    "train": 2022,
+    "validation_and_calibration": 2023,
+    "test": 2024
+  },
+  "purge": "Exclude label windows ending on or after the next year boundary",
+  "features": [
+    "log1p_fwi_lag1",
+    "log1p_fwi_mean_7d",
+    "log1p_fwi_max_7d",
+    "log1p_fwi_mean_30d",
+    "log1p_past_fire_detections_7d",
+    "log1p_past_fire_detections_30d",
+    "latitude",
+    "longitude",
+    "annual_sin",
+    "annual_cos"
+  ],
+  "C_candidates": [
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "selection": "Greatest 2023 average precision; smaller C breaks ties",
+  "scaling": "Fit StandardScaler on 2022 only",
+  "calibration": "Sigmoid fitted to selected model logits and 2023 labels; no model refit",
+  "logistic_parameters": {
+    "solver": "lbfgs",
+    "max_iter": 1000,
+    "tol": 1e-06,
+    "class_weight": null
+  },
+  "calibrator_parameters": {
+    "C": 1000000.0,
+    "max_iter": 1000,
+    "tol": 1e-06
+  },
+  "budgets": [
+    10,
+    25,
+    50,
+    100
+  ],
+  "headline_budget": 50,
+  "strategies": [
+    "risk_only",
+    "risk_times_population"
+  ],
+  "ties": "Score descending, cell_id ascending; independent of labels",
+  "cohort": "Fixed cells with finite nonnegative population; identical for all methods",
+  "exposure": "WorldPop 2020 persons per cell; never a predictor",
+  "baselines": [
+    "2022 smoothed positive frequency (Beta(1,1))",
+    "FWI lag 1",
+    "past detections 7d",
+    "past detections 30d"
+  ],
+  "bootstrap": {
+    "method": "Paired circular moving-block resampling of weeks",
+    "replicates": 2000,
+    "block_weeks": 4,
+    "seed": 17,
+    "statistic": "Pooled population-weighted recall difference at K=50"
+  },
+  "limitations": [
+    "Retrospective reanalysis ranking; operational FWI publication lag and live access are unverified",
+    "FWI weather pixels are coarser than the 10 km decision grid",
+    "Negative label means no qualifying satellite detection, not absence of fire",
+    "Population is a fixed exposure proxy, not people harmed or losses prevented",
+    "2023 is used for both model selection and calibration; only 2024 is held out",
+    "One province, one test year; temporal bootstrap does not establish generalization or causal benefit"
+  ]
+}

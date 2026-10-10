@@ -1,0 +1,36 @@
+{
+  "selected_method": "previous_no_coordinates",
+  "selection_year": 2023,
+  "selection_metric": "average precision",
+  "development_average_precision": 0.4817157189720804,
+  "exploratory_2024_average_precision": 0.22097905656217912,
+  "evaluation_cohort_cells": 949,
+  "excluded_cells": [
+    "SS-025-0961",
+    "SS-025-0973",
+    "SS-036-0946",
+    "SS-043-0946",
+    "SS-045-0952",
+    "SS-046-0952",
+    "SS-055-0956",
+    "SS-057-0972",
+    "SS-057-0973",
+    "SS-059-0953",
+    "SS-062-0963"
+  ],
+  "model_sha256": "1ef44d73e68b1b05b2b32c4455ad494b6823b825efdd72df77cc5be08a0f0e28",
+  "input_sha256": "92661680628f902e8489ae2680fae87f546f07122a5c011b33e4436d6f96d6af",
+  "max_packaged_score_error": 1.1102230246251565e-16,
+  "reproduction": {
+    "training_rows": 48501,
+    "training_positives": 1020,
+    "training_cohort_cells": 951,
+    "max_frozen_parameter_difference": 0.0
+  },
+  "limits": [
+    "2024 is exploratory after earlier project analyses",
+    "Scores are not verified operational probabilities",
+    "Agriculture covers annual cropland and closed-canopy oil palm only",
+    "Oil-palm allocation does not beat every baseline"
+  ]
+}

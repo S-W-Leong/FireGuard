@@ -1,0 +1,34 @@
+{
+  "source_crs": "ESRI:54034",
+  "equal_area": true,
+  "source_features": 1,
+  "source_rings": 190081,
+  "regional_candidate_rings": 78,
+  "invalid_features_repaired": 0,
+  "cells": 960,
+  "cells_with_peat": 274,
+  "peat_hectares": 1207141.8135412831,
+  "union_hectares": 1207141.8135412834,
+  "files": [
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/peatmap_asia/Asia/SEA_Peatland.shp",
+      "bytes": 55998588,
+      "sha256": "ab6ef52b5bee814bea8bf96aa68c7a09d6c80ad8d5d6508d3061bd3238375e21"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/peatmap_asia/Asia/SEA_Peatland.shx",
+      "bytes": 108,
+      "sha256": "06792717062e32fee77f4c4548dce3857304c4a58edb5eb087c2db7e9afc56de"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/peatmap_asia/Asia/SEA_Peatland.dbf",
+      "bytes": 118,
+      "sha256": "7f8ccb33300c491c87c624fd5d12f1f5707c6120bcdf6ea8b3053203c2982dcb"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/peatmap_asia/Asia/SEA_Peatland.prj",
+      "bytes": 373,
+      "sha256": "4b0a0e1cead2fbe25934bc9b7b8e9b3e4ed118ed0ae6c81603045af8b5f7623c"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "independent_average_precision_checks": 14,
+  "independent_weekly_allocation_checks": 17472,
+  "independent_export_prediction_rows": 98696,
+  "independent_export_max_error": 4.996003610813204e-16,
+  "model_and_input_hashes_verified": true,
+  "selection_uses_2023_only": true,
+  "fixed_evaluation_cohort_cells": 949,
+  "retrained_base_parameters_exactly_match_frozen_fit": true
+}
