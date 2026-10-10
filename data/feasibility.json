@@ -1,0 +1,353 @@
+{
+  "generated_at_utc": "2026-10-10T14:34:35.452748+00:00",
+  "status": "Historical data feasibility passed: complete regional FWI, FIRMS labels, and population joined; no model trained",
+  "region": "South Sumatra, Indonesia",
+  "timezone": "Asia/Jakarta",
+  "grid": {
+    "crs": "EPSG:32748",
+    "square_side_metres": 10000,
+    "cells": 960,
+    "area_km2": 85770.36597670571,
+    "boundary_year": "2017",
+    "boundary_license": "Open Data Commons Open Database License 1.0",
+    "geometry": "simplified boundary for feasibility probe"
+  },
+  "fires": {
+    "sensor": "VIIRS S-NPP",
+    "processing": "standard science-quality country-year archive",
+    "qualification": "confidence nominal or high AND type 0 (presumed vegetation fire); exact duplicate records removed",
+    "years": [
+      {
+        "year": 2021,
+        "national_detections": 68325,
+        "province_detections": 2320,
+        "qualified_detections": 1924,
+        "positive_cells": 454,
+        "confidence_counts_before_filter": {
+          "n": 2254,
+          "l": 44,
+          "h": 22
+        },
+        "type_counts_before_filter": {
+          "0": 1954,
+          "2": 364,
+          "3": 2
+        },
+        "first_utc_date": "2021-01-01",
+        "last_utc_date": "2021-12-31"
+      },
+      {
+        "year": 2022,
+        "national_detections": 57220,
+        "province_detections": 1671,
+        "qualified_detections": 1486,
+        "positive_cells": 368,
+        "confidence_counts_before_filter": {
+          "n": 1634,
+          "l": 27,
+          "h": 10
+        },
+        "type_counts_before_filter": {
+          "0": 1512,
+          "2": 156,
+          "3": 3
+        },
+        "first_utc_date": "2022-01-01",
+        "last_utc_date": "2022-12-31"
+      },
+      {
+        "year": 2023,
+        "national_detections": 253388,
+        "province_detections": 29056,
+        "qualified_detections": 27576,
+        "positive_cells": 720,
+        "confidence_counts_before_filter": {
+          "n": 26533,
+          "l": 1369,
+          "h": 1154
+        },
+        "type_counts_before_filter": {
+          "0": 28945,
+          "2": 94,
+          "3": 17
+        },
+        "first_utc_date": "2023-01-01",
+        "last_utc_date": "2023-12-31"
+      },
+      {
+        "year": 2024,
+        "national_detections": 104186,
+        "province_detections": 4902,
+        "qualified_detections": 4598,
+        "positive_cells": 578,
+        "confidence_counts_before_filter": {
+          "n": 4541,
+          "l": 231,
+          "h": 130
+        },
+        "type_counts_before_filter": {
+          "0": 4829,
+          "2": 55,
+          "3": 16,
+          "1": 2
+        },
+        "first_utc_date": "2024-01-01",
+        "last_utc_date": "2024-12-31"
+      }
+    ]
+  },
+  "population": {
+    "population_year": 2020,
+    "units": "estimated persons per raster pixel",
+    "raster_resolution_degrees": [
+      0.0083333333,
+      0.0083333333
+    ],
+    "nodata": -99999.0,
+    "aggregation": "sum raster pixels whose centres lie within simplified province boundary and grid square",
+    "valid_province_pixels": 100406,
+    "masked_or_nodata_province_pixels": 132,
+    "population_total_approximate": 8076846.145249128,
+    "cells_with_valid_population": 951,
+    "cells_without_valid_population": 9
+  },
+  "labels": {
+    "prediction_cutoff": "00:00 Asia/Jakarta on each weekly anchor",
+    "features": "only calendar days strictly before prediction_date",
+    "outcome": "qualifying detections during prediction_date through prediction_date + 6 days inclusive",
+    "negative_meaning": "no qualifying detection in archive; does not prove absence of fire",
+    "years": [
+      {
+        "year": 2022,
+        "weeks": 52,
+        "cell_week_rows": 49920,
+        "positive_cell_weeks": 1026,
+        "negative_cell_weeks": 48894,
+        "positive_rate": 0.020552884615384615,
+        "weeks_with_detections": 50
+      },
+      {
+        "year": 2023,
+        "weeks": 52,
+        "cell_week_rows": 49920,
+        "positive_cell_weeks": 3865,
+        "negative_cell_weeks": 46055,
+        "positive_rate": 0.07742387820512821,
+        "weeks_with_detections": 52
+      },
+      {
+        "year": 2024,
+        "weeks": 52,
+        "cell_week_rows": 49920,
+        "positive_cell_weeks": 2187,
+        "negative_cell_weeks": 47733,
+        "positive_rate": 0.04381009615384615,
+        "weeks_with_detections": 52
+      }
+    ]
+  },
+  "weather": null,
+  "fwi": {
+    "generated_at_utc": "2026-10-10T14:32:36.979345+00:00",
+    "status": "Complete regional 2021\u20132024 FWI archive verified and joined to all 2022\u20132024 weekly labels; no model trained",
+    "dataset": "cems-fire-historical-v1",
+    "product": "ERA5-derived historical FWI reanalysis",
+    "download": {
+      "path": "data/raw/copernicus_fwi_south_sumatra_2021_2024.nc",
+      "bytes": 1074727,
+      "sha256": "5cede97b820b63b1a3d89a37ac33b6ba6fb854592dbe774d7e32c5e1fbcca852"
+    },
+    "source_period": {
+      "first_date": "2021-01-01",
+      "last_date": "2024-12-31",
+      "days": 1461,
+      "dimensions": {
+        "valid_time": 1461,
+        "latitude": 15,
+        "longitude": 19
+      }
+    },
+    "variable": "fwinx",
+    "variable_attributes": {
+      "GRIB_paramId": "260540",
+      "GRIB_dataType": "fc",
+      "GRIB_numberOfPoints": "285",
+      "GRIB_typeOfLevel": "surface",
+      "GRIB_stepUnits": "1",
+      "GRIB_stepType": "instant",
+      "GRIB_gridType": "regular_ll",
+      "GRIB_uvRelativeToGrid": "0",
+      "GRIB_NV": "0",
+      "GRIB_Nx": "19",
+      "GRIB_Ny": "15",
+      "GRIB_cfName": "unknown",
+      "GRIB_cfVarName": "fwinx",
+      "GRIB_gridDefinitionDescription": "Latitude/longitude",
+      "GRIB_iDirectionIncrementInDegrees": "0.25",
+      "GRIB_iScansNegatively": "0",
+      "GRIB_jDirectionIncrementInDegrees": "0.25",
+      "GRIB_jPointsAreConsecutive": "0",
+      "GRIB_jScansPositively": "0",
+      "GRIB_latitudeOfFirstGridPointInDegrees": "-1.5",
+      "GRIB_latitudeOfLastGridPointInDegrees": "-5.0",
+      "GRIB_longitudeOfFirstGridPointInDegrees": "102.0",
+      "GRIB_longitudeOfLastGridPointInDegrees": "106.5",
+      "GRIB_missingValue": "3.4028234663852886e+38",
+      "GRIB_name": "Forest fire weather index (as defined by the Canadian Forest Service)",
+      "GRIB_shortName": "fwinx",
+      "GRIB_units": "Numeric",
+      "long_name": "Forest fire weather index (as defined by the Canadian Forest Service)",
+      "units": "Numeric",
+      "standard_name": "unknown"
+    },
+    "decision_grid": {
+      "cells": 960,
+      "unique_nearest_weather_pixels": 143,
+      "missing_cell_days": 0,
+      "minimum_fwi": 1.7214986103297747e-09,
+      "maximum_fwi": 63.10348892211914
+    },
+    "weekly_join": {
+      "rows": 149760,
+      "eligible_exposure_rows": 148356,
+      "positive_eligible_rows": 7078,
+      "excluded_missing_exposure_rows": 1404,
+      "features": [
+        "fwi_lag1",
+        "fwi_mean_7d",
+        "fwi_max_7d",
+        "fwi_mean_30d"
+      ]
+    },
+    "time_alignment": "Last FWI day and all rolling FWI windows strictly precede each prediction date; outcomes cover the next seven local calendar days.",
+    "limits": [
+      "Retrospective reanalysis study; operational forecast access and historical publication delay remain unverified.",
+      "A 0.25-degree interpolated grid retains approximately 31 km source meteorological resolution; 10 km decision cells share weather pixels.",
+      "Population is a static 2020 proxy. Nine cells lack valid population pixels and are excluded from exposure-weighted evaluation.",
+      "No qualifying FIRMS detection means an observed negative, not proof that no fire occurred.",
+      "Chronological model evaluation, calibration, and baseline comparisons remain outstanding."
+    ],
+    "source": "https://ewds.climate.copernicus.eu/datasets/cems-fire-historical-v1?tab=overview",
+    "licence": "CC-BY 4.0",
+    "request_record": "data/fwi_history_request.json",
+    "verification": {
+      "independent_source_and_window_checks": 33,
+      "early_january_warmup_checked": true,
+      "unique_cell_week_keys": true,
+      "missing_fwi_features": 0
+    }
+  },
+  "remaining_limits": [
+    "ERA5 and reprocessed FIRMS data support retrospective evaluation, not verified real-time seven-day forecast availability.",
+    "Population is a fixed 2020 exposure proxy; it is not a current population census or a loss estimate.",
+    "FIRMS detections are thermal observations, not unique ignitions, burned area, or confirmed damaging wildfires.",
+    "Satellite downtime/cloud obscuration and no-detection label uncertainty require review before training.",
+    "Population aggregation uses pixel centres; cells without valid pixels must be excluded or handled explicitly, never silently assigned zero exposure.",
+    "FWI is historical reanalysis; live forecast access and historical availability at prediction cutoffs remain unverified."
+  ],
+  "sources": [
+    {
+      "url": "https://www.geoboundaries.org/api/current/gbOpen/IDN/ADM1/",
+      "path": "data/raw/boundary_metadata.json",
+      "bytes": 1752,
+      "sha256": "a3243c0196ed486046f3288586fcc90af2b695ddcbb7bfe9c1f8e81a43b28994",
+      "cached": true
+    },
+    {
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/IDN/ADM1/geoBoundaries-IDN-ADM1_simplified.geojson",
+      "path": "data/raw/indonesia_adm1_simplified.geojson",
+      "bytes": 3397843,
+      "sha256": "5a6be3d1484166132751fe535dd164e1491e657f2d38dced177f067a7bc00d8f",
+      "cached": true
+    },
+    {
+      "url": "https://firms.modaps.eosdis.nasa.gov/data/country/yearly_summary_files.txt",
+      "path": "data/raw/firms_catalogue.csv",
+      "bytes": 554849,
+      "sha256": "a85c319c545f0004ffaa659e5063ed0547cc59c409e16d2a54fdcf37e7a33f8c",
+      "cached": true
+    },
+    {
+      "url": "https://firms.modaps.eosdis.nasa.gov/data/country/viirs-snpp/2021/viirs-snpp_2021_Indonesia.csv",
+      "path": "data/raw/viirs-snpp_2021_Indonesia.csv",
+      "bytes": 5401447,
+      "sha256": "6d99f3fb49d154b5bb4eaaaa8a9da4f62ef930fa91ba0c4325835164a9a5a946",
+      "cached": true
+    },
+    {
+      "url": "https://firms.modaps.eosdis.nasa.gov/data/country/viirs-snpp/2022/viirs-snpp_2022_Indonesia.csv",
+      "path": "data/raw/viirs-snpp_2022_Indonesia.csv",
+      "bytes": 4521004,
+      "sha256": "06627b2f80bde393725e285e097cbc1bfd592c39bf0e3ef78774db2ac2981804",
+      "cached": true
+    },
+    {
+      "url": "https://firms.modaps.eosdis.nasa.gov/data/country/viirs-snpp/2023/viirs-snpp_2023_Indonesia.csv",
+      "path": "data/raw/viirs-snpp_2023_Indonesia.csv",
+      "bytes": 20067598,
+      "sha256": "2dba3b772b5a3a2cc0feed128af74637810021dd41dc34d584cb99b40411665a",
+      "cached": true
+    },
+    {
+      "url": "https://firms.modaps.eosdis.nasa.gov/data/country/viirs-snpp/2024/viirs-snpp_2024_Indonesia.csv",
+      "path": "data/raw/viirs-snpp_2024_Indonesia.csv",
+      "bytes": 8238988,
+      "sha256": "23be16b48fb6ac3a21fd2130e66149d305af71c62bbb39e76a6a0632a9dd69bd",
+      "cached": true
+    },
+    {
+      "url": "https://data.worldpop.org/GIS/Population/Global_2000_2020_1km/2020/IDN/idn_ppp_2020_1km_Aggregated.tif",
+      "path": "data/raw/idn_ppp_2020_1km_Aggregated.tif",
+      "bytes": 11290071,
+      "sha256": "ffc2832e66e5976c6928d7f6d61efed97de89f0eec05a8c607bb0e7e13b6ccfa",
+      "cached": true
+    }
+  ],
+  "verification": {
+    "source_hashes_verified": 8,
+    "grid_cells": 960,
+    "qualified_detections": 35584,
+    "weekly_rows": 149760,
+    "weekly_positive_rows": 7078,
+    "weekly_labels_verified_by_independent_interval_assignment": true,
+    "timezone_conversion_verified": true,
+    "missing_exposure_cells": [
+      {
+        "cell_id": "SS-025-0961",
+        "area_km2": 0.0305657132905469
+      },
+      {
+        "cell_id": "SS-025-0973",
+        "area_km2": 0.0922079205067708
+      },
+      {
+        "cell_id": "SS-036-0946",
+        "area_km2": 1.419729325693836
+      },
+      {
+        "cell_id": "SS-043-0946",
+        "area_km2": 0.0045974351547457
+      },
+      {
+        "cell_id": "SS-046-0952",
+        "area_km2": 0.0010825808435984
+      },
+      {
+        "cell_id": "SS-055-0956",
+        "area_km2": 0.7788638495779144
+      },
+      {
+        "cell_id": "SS-057-0972",
+        "area_km2": 0.1009013246204898
+      },
+      {
+        "cell_id": "SS-057-0973",
+        "area_km2": 0.8987332551183018
+      },
+      {
+        "cell_id": "SS-062-0963",
+        "area_km2": 0.1710448548354441
+      }
+    ]
+  }
+}

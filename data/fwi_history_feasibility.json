@@ -1,0 +1,90 @@
+{
+  "generated_at_utc": "2026-10-10T14:32:36.979345+00:00",
+  "status": "Complete regional 2021\u20132024 FWI archive verified and joined to all 2022\u20132024 weekly labels; no model trained",
+  "dataset": "cems-fire-historical-v1",
+  "product": "ERA5-derived historical FWI reanalysis",
+  "download": {
+    "path": "data/raw/copernicus_fwi_south_sumatra_2021_2024.nc",
+    "bytes": 1074727,
+    "sha256": "5cede97b820b63b1a3d89a37ac33b6ba6fb854592dbe774d7e32c5e1fbcca852"
+  },
+  "source_period": {
+    "first_date": "2021-01-01",
+    "last_date": "2024-12-31",
+    "days": 1461,
+    "dimensions": {
+      "valid_time": 1461,
+      "latitude": 15,
+      "longitude": 19
+    }
+  },
+  "variable": "fwinx",
+  "variable_attributes": {
+    "GRIB_paramId": "260540",
+    "GRIB_dataType": "fc",
+    "GRIB_numberOfPoints": "285",
+    "GRIB_typeOfLevel": "surface",
+    "GRIB_stepUnits": "1",
+    "GRIB_stepType": "instant",
+    "GRIB_gridType": "regular_ll",
+    "GRIB_uvRelativeToGrid": "0",
+    "GRIB_NV": "0",
+    "GRIB_Nx": "19",
+    "GRIB_Ny": "15",
+    "GRIB_cfName": "unknown",
+    "GRIB_cfVarName": "fwinx",
+    "GRIB_gridDefinitionDescription": "Latitude/longitude",
+    "GRIB_iDirectionIncrementInDegrees": "0.25",
+    "GRIB_iScansNegatively": "0",
+    "GRIB_jDirectionIncrementInDegrees": "0.25",
+    "GRIB_jPointsAreConsecutive": "0",
+    "GRIB_jScansPositively": "0",
+    "GRIB_latitudeOfFirstGridPointInDegrees": "-1.5",
+    "GRIB_latitudeOfLastGridPointInDegrees": "-5.0",
+    "GRIB_longitudeOfFirstGridPointInDegrees": "102.0",
+    "GRIB_longitudeOfLastGridPointInDegrees": "106.5",
+    "GRIB_missingValue": "3.4028234663852886e+38",
+    "GRIB_name": "Forest fire weather index (as defined by the Canadian Forest Service)",
+    "GRIB_shortName": "fwinx",
+    "GRIB_units": "Numeric",
+    "long_name": "Forest fire weather index (as defined by the Canadian Forest Service)",
+    "units": "Numeric",
+    "standard_name": "unknown"
+  },
+  "decision_grid": {
+    "cells": 960,
+    "unique_nearest_weather_pixels": 143,
+    "missing_cell_days": 0,
+    "minimum_fwi": 1.7214986103297747e-09,
+    "maximum_fwi": 63.10348892211914
+  },
+  "weekly_join": {
+    "rows": 149760,
+    "eligible_exposure_rows": 148356,
+    "positive_eligible_rows": 7078,
+    "excluded_missing_exposure_rows": 1404,
+    "features": [
+      "fwi_lag1",
+      "fwi_mean_7d",
+      "fwi_max_7d",
+      "fwi_mean_30d"
+    ]
+  },
+  "time_alignment": "Last FWI day and all rolling FWI windows strictly precede each prediction date; outcomes cover the next seven local calendar days.",
+  "limits": [
+    "Retrospective reanalysis study; operational forecast access and historical publication delay remain unverified.",
+    "A 0.25-degree interpolated grid retains approximately 31 km source meteorological resolution; 10 km decision cells share weather pixels.",
+    "Population is a static 2020 proxy. Nine cells lack valid population pixels and are excluded from exposure-weighted evaluation.",
+    "No qualifying FIRMS detection means an observed negative, not proof that no fire occurred.",
+    "Chronological model evaluation, calibration, and baseline comparisons remain outstanding."
+  ],
+  "source": "https://ewds.climate.copernicus.eu/datasets/cems-fire-historical-v1?tab=overview",
+  "licence": "CC-BY 4.0",
+  "request_record": "data/fwi_history_request.json",
+  "verification": {
+    "independent_source_and_window_checks": 33,
+    "early_january_warmup_checked": true,
+    "unique_cell_week_keys": true,
+    "missing_fwi_features": 0
+  }
+}
