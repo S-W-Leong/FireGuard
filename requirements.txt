@@ -1,0 +1,5 @@
+# Dashboard runtime; source acquisition and model fitting are offline.
+streamlit>=1.65,<2
+plotly>=6,<7
+pandas>=3,<4
+numpy>=2,<3
