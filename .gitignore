@@ -4,3 +4,5 @@ __pycache__/
 data/raw/
 data/probe/
 scripts/
+!.agents/skills/developing-with-streamlit/scripts/
+!.agents/skills/developing-with-streamlit/scripts/**

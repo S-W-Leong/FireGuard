@@ -57,6 +57,7 @@ a verified selected model package; a boosted challenger must also be verified
 and recommended by its development gate before it can be bundled. Review the
 new bundle before replacing the deployed files and restart the app afterward.
 
+
 ## Verify
 
 ```sh

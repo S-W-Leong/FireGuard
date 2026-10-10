@@ -11,291 +11,22 @@ from data_loader import load_fireguard_data, load_grid, load_manifest
 from fireguard.dashboard_data import EXPOSURE_MODES, evaluate, rank_week
 
 st.set_page_config(page_title="FireGuard — Preventive Monitoring", page_icon="🔥",
-                   layout="wide", initial_sidebar_state="expanded")
-st.markdown("""<style>
-/* ── Google Fonts ──────────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
-/* ── Design tokens ─────────────────────────────────────────────────────── */
-:root {
-  --bg-base:       #020617;
-  --bg-card:       #0f172a;
-  --bg-deep:       #080f1f;
-  --border:        #1e293b;
-  --border-accent: #334155;
-  --txt-primary:   #f1f5f9;
-  --txt-secondary: #94a3b8;
-  --txt-muted:     #475569;
-  --amber:         #f59e0b;
-  --amber-lt:      #fbbf24;
-  --crimson:       #ef4444;
-  --green:         #22c55e;
-  --blue:          #3b82f6;
-  --purple:        #8b5cf6;
-  --teal:          #14b8a6;
+                   layout="wide", initial_sidebar_state="auto")
+# Native theming handles appearance; this small layout override keeps the two
+# built-in sidebar controls at the same viewport anchor. Streamlit has no
+# public setting for their position. Keep the toolbar mounted for reopening.
+st.html("""<style>
+[data-testid="stSidebarCollapseButton"] {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    margin: 0;
+    visibility: visible;
 }
-
-/* ── Full-app dark background ──────────────────────────────────────────── */
-html, body, [class*="css"], .stApp,
-[data-testid="stAppViewContainer"],
-[data-testid="stMain"],
 [data-testid="stMainBlockContainer"] {
-  background-color: var(--bg-base) !important;
-  font-family: 'Inter', sans-serif !important;
-  color: var(--txt-primary) !important;
+    padding-top: 4rem;
 }
-.block-container { padding-top: 0.5rem !important; }
-
-/* ── Hide Streamlit chrome ──────────────────────────────────────────────── */
-#MainMenu, footer { visibility: hidden !important; }
-header { background: transparent !important; }
-.stDeployButton, [data-testid="stToolbar"] { display: none !important; }
-
-/* ── Sidebar ────────────────────────────────────────────────────────────── */
-[data-testid="stSidebar"] {
-  background-color: #080f1f !important;
-  border-right: 1px solid var(--border) !important;
-  min-width: 300px !important;
-  max-width: 340px !important;
-}
-[data-testid="stSidebar"] * { color: var(--txt-primary) !important; }
-[data-testid="stSidebarContent"] { padding: 1rem 1.25rem !important; }
-
-/* ── Slider track & thumb ───────────────────────────────────────────────── */
-[data-testid="stSlider"] [data-baseweb="slider"] [role="slider"] {
-  background-color: var(--amber) !important;
-  border-color: var(--amber-lt) !important;
-  box-shadow: 0 0 6px var(--amber) !important;
-}
-/* Active fill */
-[data-testid="stSlider"] > div > div > div:first-child > div {
-  background: linear-gradient(90deg, var(--amber), var(--crimson)) !important;
-}
-
-/* ── Sidebar stat cards ─────────────────────────────────────────────────── */
-.stat-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin-top: 10px;
-}
-.stat-label {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--txt-muted);
-  margin-bottom: 4px;
-}
-.stat-value          { font-size: 22px; font-weight: 800; color: var(--txt-primary); }
-.stat-value.green    { color: var(--green); }
-.stat-value.amber    { color: var(--amber); }
-.stat-value.crimson  { color: var(--crimson); }
-
-/* ── Formula hint ───────────────────────────────────────────────────────── */
-.formula-hint {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--txt-muted);
-  background: #050d1a;
-  border-left: 2px solid var(--border-accent);
-  padding: 8px 10px;
-  border-radius: 4px;
-  margin-top: 14px;
-  line-height: 1.7;
-}
-
-/* ── App header ─────────────────────────────────────────────────────────── */
-.app-header {
-  padding: 14px 0 12px 0;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 16px;
-}
-.app-title {
-  font-size: 21px;
-  font-weight: 700;
-  color: var(--txt-primary);
-}
-.app-subtitle {
-  font-size: 12px;
-  color: var(--txt-secondary);
-  margin-top: 3px;
-}
-.badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 11px;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  border: 1px solid;
-}
-.badge-amber  { background: rgba(245,158,11,.15); border-color: rgba(245,158,11,.4); color: var(--amber-lt); }
-.badge-blue   { background: rgba(59,130,246,.15); border-color: rgba(59,130,246,.4); color: #60a5fa; }
-.badge-green  { background: rgba(34,197,94,.15);  border-color: rgba(34,197,94,.4);  color: #4ade80; }
-
-/* ── Tabs ───────────────────────────────────────────────────────────────── */
-.stTabs [data-baseweb="tab-list"] {
-  background: var(--bg-card) !important;
-  border-bottom: 1px solid var(--border) !important;
-  border-radius: 10px 10px 0 0 !important;
-  padding: 4px 8px 0 8px !important;
-  gap: 0 !important;
-}
-.stTabs [data-baseweb="tab"] {
-  background: transparent !important;
-  color: var(--txt-secondary) !important;
-  border-bottom: 2px solid transparent !important;
-  padding: 10px 18px !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  transition: color .2s;
-}
-.stTabs [aria-selected="true"] {
-  color: var(--txt-primary) !important;
-  border-bottom: 2px solid var(--blue) !important;
-}
-.stTabs [data-baseweb="tab-panel"] {
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border) !important;
-  border-top: none !important;
-  border-radius: 0 0 10px 10px !important;
-  padding: 20px !important;
-}
-
-/* ── Section headers inside tabs ────────────────────────────────────────── */
-.section-hdr {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--txt-muted);
-  margin: 18px 0 8px 0;
-  padding-bottom: 5px;
-  border-bottom: 1px solid var(--border);
-}
-
-/* ── Cell detail card ───────────────────────────────────────────────────── */
-.detail-card {
-  background: var(--bg-deep);
-  border: 1px solid var(--border-accent);
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 14px;
-}
-.detail-card h3 {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--txt-primary);
-  margin: 0 0 4px 0;
-}
-.metric-chip {
-  display: inline-block;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 9px 15px;
-  margin: 6px 6px 0 0;
-  text-align: center;
-  min-width: 90px;
-}
-.metric-chip .val { font-size: 19px; font-weight: 800; }
-.metric-chip .lbl { font-size: 9px; color: var(--txt-muted); text-transform: uppercase; letter-spacing: .1em; margin-top: 2px; }
-.explain-box {
-  background: rgba(245,158,11,.07);
-  border: 1px solid rgba(245,158,11,.22);
-  border-radius: 8px;
-  padding: 14px;
-  margin-top: 12px;
-  font-size: 13px;
-  color: var(--txt-secondary);
-  line-height: 1.65;
-}
-.directive-box {
-  background: rgba(59,130,246,.07);
-  border: 1px solid rgba(59,130,246,.22);
-  border-radius: 8px;
-  padding: 14px;
-  margin-top: 8px;
-  font-size: 13px;
-  color: #93c5fd;
-  line-height: 1.65;
-}
-
-/* ── Streamlit metric tiles ─────────────────────────────────────────────── */
-[data-testid="metric-container"] {
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 10px !important;
-  padding: 14px 16px !important;
-}
-[data-testid="metric-container"] label {
-  color: var(--txt-secondary) !important;
-  font-size: 10px !important;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-}
-[data-testid="metric-container"] [data-testid="stMetricValue"] {
-  color: var(--txt-primary) !important;
-  font-size: 22px !important;
-  font-weight: 800 !important;
-}
-[data-testid="stMetricDelta"] svg { display: none; }
-
-/* ── Info blocks (Tab 3) ────────────────────────────────────────────────── */
-.info-block {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 18px 20px;
-  margin-top: 12px;
-  font-size: 13px;
-  color: var(--txt-secondary);
-  line-height: 1.75;
-}
-.info-block h4 { color: var(--txt-primary); font-size: 14px; font-weight: 700; margin: 0 0 10px 0; }
-.info-block code {
-  background: var(--bg-deep);
-  border-radius: 4px;
-  padding: 2px 6px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--amber);
-}
-.info-block table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
-.info-block th { text-align: left; padding: 8px; color: var(--txt-muted); border-bottom: 1px solid var(--border); }
-.info-block td { padding: 7px 8px; border-bottom: 1px solid #0a1628; }
-.info-block td:first-child { color: var(--txt-primary); }
-.info-block td:not(:first-child) { color: var(--txt-secondary); }
-
-/* ── Radio (view toggle) ────────────────────────────────────────────────── */
-[data-testid="stRadio"] > div { flex-direction: row !important; gap: 6px !important; flex-wrap: wrap; }
-[data-testid="stRadio"] label {
-  background: var(--bg-deep);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 5px 12px !important;
-  font-size: 12px !important;
-  cursor: pointer;
-  transition: border-color .2s;
-}
-[data-testid="stRadio"] label:hover { border-color: var(--border-accent); }
-
-/* ── Dataframe ──────────────────────────────────────────────────────────── */
-[data-testid="stDataFrame"] { border: 1px solid var(--border) !important; border-radius: 8px; overflow: hidden; }
-
-/* ── Selectbox ──────────────────────────────────────────────────────────── */
-[data-testid="stSelectbox"] > div > div {
-  background: var(--bg-deep) !important;
-  border-color: var(--border-accent) !important;
-  color: var(--txt-primary) !important;
-  border-radius: 8px !important;
-}
-</style>""", unsafe_allow_html=True)
+</style>""")
 
 
 @st.cache_data(show_spinner=False)
@@ -369,67 +100,73 @@ def year_evaluation(year, exposure_mode, budget, bundle_version):
 
 with st.sidebar:
     st.markdown("## 🔥 FireGuard")
-    st.caption("Predict Early. Prioritize Prevention.")
+    st.caption("Historical monitoring planner")
     st.markdown("### Monitoring scenario")
     year = st.selectbox("Historical year", manifest["years"], index=len(manifest["years"]) - 1, key="year")
     dates = sorted(data.loc[data.prediction_date.str.startswith(str(year)), "prediction_date"].unique())
     default = f"{year}-09-02" if f"{year}-09-02" in dates else dates[-1]
     if "week" in st.session_state and st.session_state.week not in dates:
         st.session_state.week = default
-    week = st.selectbox("Week starting (Asia/Jakarta)", dates, index=dates.index(default), key="week")
+    week = st.selectbox("Week starting (Asia/Jakarta)", dates, index=dates.index(default), key="week",
+                        format_func=lambda date: pd.Timestamp(date).strftime("%d %b %Y"))
     exposure_mode = st.selectbox("Exposure to prioritize", list(EXPOSURE_MODES), key="exposure")
     k = st.slider("Available monitoring teams (K)", 1, 200, 50, key="budget",
                   help="One equal-cost cell inspection per team during the selected week. Travel routing is not modeled.")
     exposure_column, unit, exposure_year = EXPOSURE_MODES[exposure_mode]
-    st.markdown(f"""<div class="stat-card"><div class="stat-label">Eligible decision cells</div>
-        <div class="stat-value">{manifest['cohort_cells']:,} / {manifest['grid_cells']:,}</div></div>
-        <div class="stat-card"><div class="stat-label">This week's monitoring budget</div>
-        <div class="stat-value amber">{k} cells · {k / manifest['cohort_cells']:.1%}</div></div>""", unsafe_allow_html=True)
+    st.metric("Eligible decision cells", f"{manifest['cohort_cells']:,} / {manifest['grid_cells']:,}", border=True)
+    st.caption(f"{k} teams cover {k / manifest['cohort_cells']:.1%} of eligible cells this week.")
     st.markdown("**Priority = risk score × exposure**")
     st.caption(f"{exposure_mode}: {unit}, map year {exposure_year}. Units remain separate. Ties use cell ID.")
-    st.info("Historical demonstration. The model uses archived inputs; live data availability has not been verified.")
+    st.caption("Historical demonstration using archived inputs. Live data availability has not been verified.")
 
 ranked = rank_week(data.loc[data.prediction_date == week], exposure_mode, k)
 selected = ranked.loc[ranked.selected]
 outcome_end = ranked.outcome_end_date.iloc[0]
-st.markdown("# FireGuard")
+st.title("FireGuard", anchor=False)
 st.markdown("Preventive monitoring priorities · **South Sumatra, Indonesia**")
-st.caption(f"HISTORICAL · {week} to {outcome_end} · {manifest['model_name']} · "
+st.caption(f":orange-badge[Historical demonstration] · {pd.Timestamp(week):%d %b %Y} – {pd.Timestamp(outcome_end):%d %b %Y} · {manifest['model_name']} · "
            f"{'Exploratory temporal evaluation' if year == 2024 else 'Development and calibration period'}")
 dispatch_tab, evaluation_tab, trust_tab = st.tabs([
-    "📍 Monitoring priorities & map", "📊 Evaluation & baselines", "🛡 Model & data"])
+    "Monitoring plan", "Evaluation", "Model & data"])
 
 with dispatch_tab:
-    st.markdown("### Where should the teams monitor?")
-    left, right = st.columns([3, 1])
-    with left:
-        view = st.radio("Map layer", ["Priority", "Model risk", "FWI", "Exposure"], horizontal=True, key="map_layer")
-        st.plotly_chart(map_figure(ranked, grid, view, exposure_column, k), width="stretch", key="dispatch_map")
-        st.caption("Clipped ~10 km decision cells. Gold markers show the selected cells; grey cells are excluded. "
-                   "Colors show the active layer in its own units. Markers indicate cell coordinates.")
-    with right:
-        st.markdown("#### Selected portfolio")
-        st.metric("Cells selected", f"{len(selected):,}")
-        st.metric(f"{exposure_mode} in selected cells ({unit})", f"{selected[exposure_column].sum():,.0f}")
-        st.caption("Exposure within cell boundaries, not estimated damage or people affected.")
+    st.subheader("Where should the teams monitor?", anchor=False)
+    a, b = st.columns(2)
+    a.metric("Cells selected", f"{len(selected):,}", border=True)
+    b.metric(f"Selected exposure ({unit})", f"{selected[exposure_column].sum():,.0f}", border=True,
+             help=f"{exposure_mode} within selected cell boundaries; map year {exposure_year}.")
+    st.caption(f"{exposure_mode} within selected cell boundaries, not estimated damage or people affected.")
+    view = st.segmented_control("Map layer", ["Priority", "Model risk", "FWI", "Exposure"],
+                                default="Priority", required=True, key="map_layer", wrap=True)
+    st.plotly_chart(map_figure(ranked, grid, view, exposure_column, k), width="stretch", key="dispatch_map",
+                    alt=f"South Sumatra {view.lower()} map with {k} selected monitoring cells.")
+    st.caption("Clipped ~10 km decision cells. Gold markers show the selected cells; grey cells are excluded. "
+               "Colors show the active layer in its own units. Markers indicate cell coordinates.")
+    with st.expander("Using this monitoring plan", icon=":material/info:"):
         st.markdown("**Recommended next step**")
         st.write("Prioritize preventive inspections in these cells and verify local conditions before allocating field resources.")
         st.caption("Equal inspection costs are assumed. Access, travel time and intervention effectiveness are not modeled.")
 
-    st.markdown(f"### This week's top {k} priorities")
     columns = {"rank": "Rank", "cell_id": "Cell", "risk_score": "Risk score",
                "priority_score": "Risk × exposure", "fwi_lag1": "Previous-day FWI",
                "population_2020": "Population (2020)", "annual_cropland_ha_2020": "Annual cropland ha (2020)",
                "closed_canopy_oil_palm_ha_2019": "Oil palm ha (2019)"}
     queue = selected[list(columns)].rename(columns=columns)
+    export = selected[["prediction_date", "outcome_end_date", *columns,
+                       "latitude", "longitude", "feature_end_date", "fwi_source_date"]]
+    with st.container(horizontal=True, horizontal_alignment="distribute", vertical_alignment="center"):
+        st.subheader(f"This week's top {k} priorities", anchor=False, width="content")
+        st.download_button("Download plan", export.to_csv(index=False),
+                           file_name=f"fireguard_{week}_{exposure_column}_K{k}.csv", mime="text/csv",
+                           icon=":material/download:", key="download_plan", on_click="ignore")
     st.dataframe(queue, hide_index=True, width="stretch", height=330,
         column_config={"Risk score": st.column_config.NumberColumn(format="%.4f"),
                        "Risk × exposure": st.column_config.NumberColumn(format="%.2f"),
-                       "Previous-day FWI": st.column_config.NumberColumn(format="%.2f")})
-    export = selected[["prediction_date", "outcome_end_date", *columns,
-                       "latitude", "longitude", "feature_end_date", "fwi_source_date"]]
-    st.download_button("Download this monitoring plan (CSV)", export.to_csv(index=False),
-                       file_name=f"fireguard_{week}_{exposure_column}_K{k}.csv", mime="text/csv")
+                       "Previous-day FWI": st.column_config.NumberColumn(format="%.2f"),
+                       "Population (2020)": st.column_config.NumberColumn(format="%,.0f"),
+                       "Annual cropland ha (2020)": st.column_config.NumberColumn(format="%,.1f"),
+                       "Oil palm ha (2019)": st.column_config.NumberColumn(format="%,.1f")},
+        alt=f"Top {k} monitoring priorities for the week starting {week}.")
 
     st.markdown("### Why this cell?")
     options = ranked.cell_id.tolist()
@@ -439,9 +176,9 @@ with dispatch_tab:
         format_func=lambda cell: f"#{int(ranked.loc[ranked.cell_id == cell, 'rank'].iloc[0])} · {cell}")
     cell = ranked.loc[ranked.cell_id == cell_id].iloc[0]
     a, b, c = st.columns(3)
-    a.metric("Model risk score", f"{cell.risk_score:.4f}")
-    b.metric(f"{exposure_mode} ({unit})", f"{cell[exposure_column]:,.1f}")
-    c.metric("Priority rank", f"{int(cell['rank'])} / {len(ranked)}")
+    a.metric("Model risk score", f"{cell.risk_score:.4f}", border=True)
+    b.metric(f"Exposure ({unit})", f"{cell[exposure_column]:,.1f}", border=True)
+    c.metric("Priority rank", f"{int(cell['rank'])} / {len(ranked)}", border=True)
     status = "Selected" if cell.selected else "Outside this week's budget"
     st.write(f"**{status}.** Score {cell.risk_score:.4f} × {cell[exposure_column]:,.1f} {unit} "
              f"= **{cell.priority_score:,.2f}** priority units. Selection follows descending priority, then cell ID.")
@@ -460,29 +197,37 @@ with evaluation_tab:
     st.markdown("### Did the priority list capture subsequent detections?")
     st.write(f"Every strategy receives **{k} cells per week**, the same **949-cell cohort**, and the same "
              f"**{exposure_mode.lower()}** exposure measurements. Observed outcomes are used only for evaluation.")
-    period = st.radio("Comparison period", ["Selected week", "All weeks in selected year"],
-                      index=1, horizontal=True, key="comparison_period")
+    period = st.segmented_control("Comparison period", ["Selected week", "All weeks in selected year"],
+                      default="All weeks in selected year", required=True, key="comparison_period", wrap=True)
     metrics = (year_evaluation(year, exposure_mode, k, bundle_version) if period.startswith("All")
                else evaluate(ranked, exposure_mode, k))
     results = metrics.set_index("method")
     ours = results.loc["FireGuard × exposure"]
     fwi = results.loc["FWI × exposure"]
     a, b, c = st.columns(3)
-    a.metric(f"Precision@{k}", pct(ours.precision))
-    b.metric(f"Recall@{k}", pct(ours.recall))
+    a.metric(f"Precision@{k}", pct(ours.precision), border=True, height="stretch")
+    b.metric(f"Recall@{k}", pct(ours.recall), border=True, height="stretch")
     difference = None if pd.isna(ours.exposure_weighted_recall) or pd.isna(fwi.exposure_weighted_recall) else (
         ours.exposure_weighted_recall - fwi.exposure_weighted_recall) * 100
     c.metric("Exposure-weighted recall", pct(ours.exposure_weighted_recall),
-             delta=None if difference is None else f"{difference:+.1f} pp vs FWI × exposure")
+             delta=None if difference is None else f"{difference:+.1f} pp", border=True, height="stretch",
+             delta_description="vs FWI × exposure")
     chart = go.Figure()
     for column, name, color in [("precision", "Precision", "#3b82f6"), ("recall", "Recall", "#14b8a6"),
                                  ("exposure_weighted_recall", "Exposure-weighted recall", "#f59e0b")]:
-        chart.add_trace(go.Bar(x=metrics["method"], y=metrics[column], name=name, marker_color=color,
-                              hovertemplate="%{x}<br>%{y:.1%}<extra>%{fullData.name}</extra>"))
-    chart.update_layout(barmode="group", height=390, margin={"l": 0, "r": 0, "t": 10, "b": 0},
+        chart.add_trace(go.Bar(y=metrics["method"], x=metrics[column], orientation="h", name=name, marker_color=color,
+                              hovertemplate="%{y}<br>%{x:.1%}<extra>%{fullData.name}</extra>"))
+    chart.update_layout(barmode="group", height=520, margin={"l": 0, "r": 10, "t": 10, "b": 70},
                         paper_bgcolor="#020617", plot_bgcolor="#0f172a", font_color="#f1f5f9",
-                        yaxis={"range": [0, 1], "tickformat": ".0%"}, legend={"orientation": "h", "y": 1.12})
-    st.plotly_chart(chart, width="stretch", key="baseline_chart")
+                        xaxis={"range": [0, 1], "tickformat": ".0%", "dtick": .25},
+                        yaxis={"autorange": "reversed", "automargin": True, "tickfont": {"size": 10},
+                               "tickvals": metrics["method"].tolist(),
+                               "ticktext": [method.replace(" × ", "<br>× ").replace(" only", "<br>only")
+                                            .replace("Historical frequency", "Historical<br>frequency")
+                                            for method in metrics["method"]]},
+                        legend={"orientation": "h", "y": -.15, "x": 0, "font": {"size": 10}})
+    st.plotly_chart(chart, width="stretch", key="baseline_chart",
+                    alt="Precision, recall, and exposure-weighted recall for seven equal-budget monitoring strategies.")
     display = metrics[["method", "weeks", "selected_cells", "true_positives", "precision", "recall", "exposure_weighted_recall"]].copy()
     for column in ["precision", "recall", "exposure_weighted_recall"]:
         display[column] = display[column].map(pct)
@@ -511,8 +256,8 @@ with trust_tab:
     dev = manifest["model_metrics"]["2023"]
     temporal = manifest["model_metrics"]["2024"]
     a, b = st.columns(2)
-    a.metric("2023 development average precision", f"{dev['average_precision']:.3f}")
-    b.metric("2024 exploratory average precision", f"{temporal['average_precision']:.3f}")
+    a.metric("2023 development average precision", f"{dev['average_precision']:.3f}", border=True)
+    b.metric("2024 exploratory average precision", f"{temporal['average_precision']:.3f}", border=True)
     st.caption("Average precision summarizes the precision-recall ranking; it is not classification accuracy. "
                "Scores should be treated as relative risk because calibration shifts across years.")
     st.markdown("#### Prediction target")

@@ -5,6 +5,27 @@ backgroundColor = "#020617"
 secondaryBackgroundColor = "#0f172a"
 textColor = "#f1f5f9"
 font = "sans serif"
+baseFontSize = 15
+headingFontSizes = ["2rem", "1.5rem", "1.25rem", "1.1rem", "1rem", "0.875rem"]
+headingFontWeights = [700, 600, 600, 600, 600, 600]
+metricValueFontSize = "1.75rem"
+borderColor = "#334155"
+baseRadius = "10px"
+buttonRadius = "8px"
+showWidgetBorder = true
+showSidebarBorder = true
+dataframeHeaderBackgroundColor = "#0f172a"
+dataframeHeaderTextColor = "#f1f5f9"
+
+[theme.sidebar]
+backgroundColor = "#080f1f"
+secondaryBackgroundColor = "#0f172a"
+textColor = "#f1f5f9"
+borderColor = "#334155"
+headingFontSizes = ["1.5rem", "1.25rem", "1.1rem", "1rem", "0.9rem", "0.875rem"]
+
+[client]
+toolbarMode = "minimal"
 
 [browser]
 gatherUsageStats = false
