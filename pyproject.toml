@@ -1,0 +1,14 @@
+[project]
+name = "fireguard"
+version = "0.2.0"
+description = "Retrospective fire occurrence modelling and monitoring priorities"
+requires-python = ">=3.12"
+dependencies = ["numpy>=2,<3", "pandas>=3,<4", "scikit-learn==1.7.2"]
+
+[dependency-groups]
+dev = ["pytest>=9,<10"]
+dashboard = ["streamlit>=1.65,<2", "plotly>=6,<7"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

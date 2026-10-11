@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "checks": {
+    "scalar_tree_scores": 68,
+    "average_precision": 12,
+    "brier_scores": 6,
+    "weekly_selections": 14976,
+    "pooled_metrics": 288,
+    "incumbent_scores": 98696
+  },
+  "max_scalar_score_error": 0.0,
+  "input_and_incumbent_hashes_preserved": true,
+  "model_protocol_and_human_protocol_hashes_match": true,
+  "adoption_recomputed_from_2023_only": true,
+  "recommended_model": "data/experiments/mvp-model/model.json",
+  "checker_source_sha256": "f5fcb96b55cfb825009fb541aea6db77567ea167d6148d100ec4825bf890a4af"
+}

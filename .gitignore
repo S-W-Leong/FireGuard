@@ -1,12 +1,22 @@
 .DS_Store
+# Generated outputs
+/output/
+/outputs/
 .venv/
 __pycache__/
+# Pitch deck temporary builds, renders, and validation artifacts
+/.submission-build/
+/output/submission/FireGuard_Submission_Final.pdf
+/output/submission/FireGuard_Submission_Final.pptx
 data/raw/
 data/probe/
 scripts/
+!.agents/skills/developing-with-streamlit/scripts/
+!.agents/skills/developing-with-streamlit/scripts/**
 .env
 .env.*
 !.env.example
 satellite_app/cache/
 *.download
 .superpowers/
+.ipynb_checkpoints/

@@ -1,0 +1,730 @@
+{
+  "2023": {
+    "average_precision": 0.4817157189720804,
+    "allocation": {
+      "population": {
+        "risk_only": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 3865,
+            "true_positives": 214,
+            "precision": 0.4115384615384615,
+            "recall": 0.05536869340232859,
+            "exposure_weighted_recall": 0.04045964712717335,
+            "total_positive_exposure": 41676149.376683995,
+            "captured_exposure": 1686202.2974
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 3865,
+            "true_positives": 433,
+            "precision": 0.3330769230769231,
+            "recall": 0.11203104786545925,
+            "exposure_weighted_recall": 0.08421624845129254,
+            "total_positive_exposure": 41676149.376683995,
+            "captured_exposure": 3509808.9504
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 3865,
+            "true_positives": 743,
+            "precision": 0.2857692307692308,
+            "recall": 0.19223803363518757,
+            "exposure_weighted_recall": 0.16513259409349923,
+            "total_positive_exposure": 41676149.376683995,
+            "captured_exposure": 6882090.658399999
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 3865,
+            "true_positives": 1224,
+            "precision": 0.2353846153846154,
+            "recall": 0.3166882276843467,
+            "exposure_weighted_recall": 0.28175575290718724,
+            "total_positive_exposure": 41676149.376683995,
+            "captured_exposure": 11742494.845900001
+          }
+        },
+        "risk_times_exposure": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 3865,
+            "true_positives": 129,
+            "precision": 0.24807692307692308,
+            "recall": 0.0333764553686934,
+            "exposure_weighted_recall": 0.28871645804522705,
+            "total_positive_exposure": 41676149.376683995,
+            "captured_exposure": 12032590.233000001
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 3865,
+            "true_positives": 273,
+            "precision": 0.21,
+            "recall": 0.07063389391979301,
+            "exposure_weighted_recall": 0.3788367260060009,
+            "total_positive_exposure": 41676149.376683995,
+            "captured_exposure": 15788455.9824
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 3865,
+            "true_positives": 534,
+            "precision": 0.2053846153846154,
+            "recall": 0.13816300129366105,
+            "exposure_weighted_recall": 0.48119312593498625,
+            "total_positive_exposure": 41676149.376683995,
+            "captured_exposure": 20054276.5955
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 3865,
+            "true_positives": 990,
+            "precision": 0.19038461538461537,
+            "recall": 0.25614489003880986,
+            "exposure_weighted_recall": 0.6098311585143427,
+            "total_positive_exposure": 41676149.376683995,
+            "captured_exposure": 25415414.4568
+          }
+        }
+      },
+      "annual_cropland": {
+        "risk_only": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 3865,
+            "true_positives": 214,
+            "precision": 0.4115384615384615,
+            "recall": 0.05536869340232859,
+            "exposure_weighted_recall": 0.07880410802726555,
+            "total_positive_exposure": 2435617.66217041,
+            "captured_exposure": 191936.67736279298
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 3865,
+            "true_positives": 433,
+            "precision": 0.3330769230769231,
+            "recall": 0.11203104786545925,
+            "exposure_weighted_recall": 0.12979426530263558,
+            "total_positive_exposure": 2435617.66217041,
+            "captured_exposure": 316129.20501953125
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 3865,
+            "true_positives": 743,
+            "precision": 0.2857692307692308,
+            "recall": 0.19223803363518757,
+            "exposure_weighted_recall": 0.21880110698573932,
+            "total_positive_exposure": 2435617.66217041,
+            "captured_exposure": 532915.8406769042
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 3865,
+            "true_positives": 1224,
+            "precision": 0.2353846153846154,
+            "recall": 0.3166882276843467,
+            "exposure_weighted_recall": 0.3628157951517027,
+            "total_positive_exposure": 2435617.66217041,
+            "captured_exposure": 883680.5587858886
+          }
+        },
+        "risk_times_exposure": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 3865,
+            "true_positives": 128,
+            "precision": 0.24615384615384617,
+            "recall": 0.03311772315653299,
+            "exposure_weighted_recall": 0.2045037325922445,
+            "total_positive_exposure": 2435617.66217041,
+            "captured_exposure": 498092.90308144526
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 3865,
+            "true_positives": 264,
+            "precision": 0.20307692307692307,
+            "recall": 0.06830530401034929,
+            "exposure_weighted_recall": 0.3312162132865528,
+            "total_positive_exposure": 2435617.66217041,
+            "captured_exposure": 806716.0590779297
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 3865,
+            "true_positives": 468,
+            "precision": 0.18,
+            "recall": 0.12108667529107374,
+            "exposure_weighted_recall": 0.4746749646089006,
+            "total_positive_exposure": 2435617.66217041,
+            "captured_exposure": 1156126.7275915525
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 3865,
+            "true_positives": 801,
+            "precision": 0.15403846153846154,
+            "recall": 0.2072445019404916,
+            "exposure_weighted_recall": 0.6546220039642369,
+            "total_positive_exposure": 2435617.66217041,
+            "captured_exposure": 1594408.9149006836
+          }
+        }
+      },
+      "closed_canopy_oil_palm": {
+        "risk_only": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 3865,
+            "true_positives": 214,
+            "precision": 0.4115384615384615,
+            "recall": 0.05536869340232859,
+            "exposure_weighted_recall": 0.04096183809558996,
+            "total_positive_exposure": 3305800.602516675,
+            "captured_exposure": 135411.66905659178
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 3865,
+            "true_positives": 433,
+            "precision": 0.3330769230769231,
+            "recall": 0.11203104786545925,
+            "exposure_weighted_recall": 0.08563588874539334,
+            "total_positive_exposure": 3305800.602516675,
+            "captured_exposure": 283095.17261157226
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 3865,
+            "true_positives": 743,
+            "precision": 0.2857692307692308,
+            "recall": 0.19223803363518757,
+            "exposure_weighted_recall": 0.14727744629132,
+            "total_positive_exposure": 3305800.602516675,
+            "captured_exposure": 486869.8706869629
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 3865,
+            "true_positives": 1224,
+            "precision": 0.2353846153846154,
+            "recall": 0.3166882276843467,
+            "exposure_weighted_recall": 0.2682630312443753,
+            "total_positive_exposure": 3305800.602516675,
+            "captured_exposure": 886824.0903206054
+          }
+        },
+        "risk_times_exposure": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 3865,
+            "true_positives": 118,
+            "precision": 0.22692307692307692,
+            "recall": 0.03053040103492885,
+            "exposure_weighted_recall": 0.11884647321690658,
+            "total_positive_exposure": 3305800.602516675,
+            "captured_exposure": 392882.74276743166
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 3865,
+            "true_positives": 254,
+            "precision": 0.19538461538461538,
+            "recall": 0.06571798188874516,
+            "exposure_weighted_recall": 0.2220230027932816,
+            "total_positive_exposure": 3305800.602516675,
+            "captured_exposure": 733963.7764065918
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 3865,
+            "true_positives": 424,
+            "precision": 0.16307692307692306,
+            "recall": 0.10970245795601552,
+            "exposure_weighted_recall": 0.3329347455755718,
+            "total_positive_exposure": 3305800.602516675,
+            "captured_exposure": 1100615.882522461
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 3865,
+            "true_positives": 694,
+            "precision": 0.13346153846153846,
+            "recall": 0.1795601552393273,
+            "exposure_weighted_recall": 0.4965312224905016,
+            "total_positive_exposure": 3305800.602516675,
+            "captured_exposure": 1641433.2144774413
+          }
+        }
+      }
+    },
+    "calibration": {
+      "brier_score": 0.05423326024122915,
+      "mean_score": 0.07832120697917325,
+      "observed_rate": 0.07832130988084623,
+      "bins": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "rows": 43039,
+          "mean_score": 0.03888707562608845,
+          "observed_rate": 0.0360835521271405
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "rows": 2744,
+          "mean_score": 0.14406206799911594,
+          "observed_rate": 0.19533527696793002
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "rows": 1082,
+          "mean_score": 0.24586612859391505,
+          "observed_rate": 0.30868761552680224
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "rows": 599,
+          "mean_score": 0.3454371185421405,
+          "observed_rate": 0.38564273789649417
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "rows": 387,
+          "mean_score": 0.44788718177951414,
+          "observed_rate": 0.4418604651162791
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "rows": 301,
+          "mean_score": 0.5489249652105684,
+          "observed_rate": 0.5249169435215947
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "rows": 260,
+          "mean_score": 0.6497559700266238,
+          "observed_rate": 0.5538461538461539
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "rows": 235,
+          "mean_score": 0.7498857843340256,
+          "observed_rate": 0.6808510638297872
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "rows": 284,
+          "mean_score": 0.8504975800683215,
+          "observed_rate": 0.7253521126760564
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "rows": 417,
+          "mean_score": 0.9540143795208966,
+          "observed_rate": 0.8920863309352518
+        }
+      ]
+    }
+  },
+  "2024": {
+    "average_precision": 0.22097905656217912,
+    "allocation": {
+      "population": {
+        "risk_only": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 2187,
+            "true_positives": 167,
+            "precision": 0.3211538461538462,
+            "recall": 0.07636031092821216,
+            "exposure_weighted_recall": 0.1079732466606593,
+            "total_positive_exposure": 23451295.716410004,
+            "captured_exposure": 2532112.5369
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 2187,
+            "true_positives": 302,
+            "precision": 0.2323076923076923,
+            "recall": 0.13808870598994055,
+            "exposure_weighted_recall": 0.18258316111308978,
+            "total_positive_exposure": 23451295.716410004,
+            "captured_exposure": 4281811.7041
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 2187,
+            "true_positives": 471,
+            "precision": 0.18115384615384617,
+            "recall": 0.21536351165980797,
+            "exposure_weighted_recall": 0.27153839407705116,
+            "total_positive_exposure": 23451295.716410004,
+            "captured_exposure": 6367927.177860001
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 2187,
+            "true_positives": 710,
+            "precision": 0.13653846153846153,
+            "recall": 0.3246456332876086,
+            "exposure_weighted_recall": 0.3863674954249845,
+            "total_positive_exposure": 23451295.716410004,
+            "captured_exposure": 9060818.390420001
+          }
+        },
+        "risk_times_exposure": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 2187,
+            "true_positives": 116,
+            "precision": 0.2230769230769231,
+            "recall": 0.053040695016003656,
+            "exposure_weighted_recall": 0.2794800210725129,
+            "total_positive_exposure": 23451295.716410004,
+            "captured_exposure": 6554168.620999999
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 2187,
+            "true_positives": 223,
+            "precision": 0.17153846153846153,
+            "recall": 0.10196616369455876,
+            "exposure_weighted_recall": 0.3795487062649423,
+            "total_positive_exposure": 23451295.716410004,
+            "captured_exposure": 8900908.9494
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 2187,
+            "true_positives": 370,
+            "precision": 0.1423076923076923,
+            "recall": 0.16918152720621857,
+            "exposure_weighted_recall": 0.47435350775590013,
+            "total_positive_exposure": 23451295.716410004,
+            "captured_exposure": 11124204.3845
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 2187,
+            "true_positives": 585,
+            "precision": 0.1125,
+            "recall": 0.2674897119341564,
+            "exposure_weighted_recall": 0.5784321557425897,
+            "total_positive_exposure": 23451295.716410004,
+            "captured_exposure": 13564983.536199998
+          }
+        }
+      },
+      "annual_cropland": {
+        "risk_only": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 2187,
+            "true_positives": 167,
+            "precision": 0.3211538461538462,
+            "recall": 0.07636031092821216,
+            "exposure_weighted_recall": 0.04453791794550685,
+            "total_positive_exposure": 949230.8603306642,
+            "captured_exposure": 42276.76616874999
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 2187,
+            "true_positives": 302,
+            "precision": 0.2323076923076923,
+            "recall": 0.13808870598994055,
+            "exposure_weighted_recall": 0.08516595375584363,
+            "total_positive_exposure": 949230.8603306642,
+            "captured_exposure": 80842.15155454101
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 2187,
+            "true_positives": 471,
+            "precision": 0.18115384615384617,
+            "recall": 0.21536351165980797,
+            "exposure_weighted_recall": 0.13263911150711594,
+            "total_positive_exposure": 949230.8603306642,
+            "captured_exposure": 125905.13792939455
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 2187,
+            "true_positives": 710,
+            "precision": 0.13653846153846153,
+            "recall": 0.3246456332876086,
+            "exposure_weighted_recall": 0.22571985872989947,
+            "total_positive_exposure": 949230.8603306642,
+            "captured_exposure": 214260.25569589846
+          }
+        },
+        "risk_times_exposure": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 2187,
+            "true_positives": 41,
+            "precision": 0.07884615384615384,
+            "recall": 0.018747142203932327,
+            "exposure_weighted_recall": 0.14231602242402414,
+            "total_positive_exposure": 949230.8603306642,
+            "captured_exposure": 135090.76040439453
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 2187,
+            "true_positives": 82,
+            "precision": 0.06307692307692307,
+            "recall": 0.037494284407864654,
+            "exposure_weighted_recall": 0.2392614500744113,
+            "total_positive_exposure": 949230.8603306642,
+            "captured_exposure": 227114.3520980957
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 2187,
+            "true_positives": 154,
+            "precision": 0.05923076923076923,
+            "recall": 0.07041609510745313,
+            "exposure_weighted_recall": 0.3916935610432425,
+            "total_positive_exposure": 949230.8603306642,
+            "captured_exposure": 371807.6159350586
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 2187,
+            "true_positives": 301,
+            "precision": 0.05788461538461538,
+            "recall": 0.13763145861911294,
+            "exposure_weighted_recall": 0.5814854428444619,
+            "total_positive_exposure": 949230.8603306642,
+            "captured_exposure": 551963.9271810058
+          }
+        }
+      },
+      "closed_canopy_oil_palm": {
+        "risk_only": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 2187,
+            "true_positives": 167,
+            "precision": 0.3211538461538462,
+            "recall": 0.07636031092821216,
+            "exposure_weighted_recall": 0.07987370590905107,
+            "total_positive_exposure": 1987282.3719405273,
+            "captured_exposure": 158731.60773461915
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 2187,
+            "true_positives": 302,
+            "precision": 0.2323076923076923,
+            "recall": 0.13808870598994055,
+            "exposure_weighted_recall": 0.1332097697059219,
+            "total_positive_exposure": 1987282.3719405273,
+            "captured_exposure": 264725.4271068359
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 2187,
+            "true_positives": 471,
+            "precision": 0.18115384615384617,
+            "recall": 0.21536351165980797,
+            "exposure_weighted_recall": 0.19885508827321866,
+            "total_positive_exposure": 1987282.3719405273,
+            "captured_exposure": 395181.21149604494
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 2187,
+            "true_positives": 710,
+            "precision": 0.13653846153846153,
+            "recall": 0.3246456332876086,
+            "exposure_weighted_recall": 0.2910485279782276,
+            "total_positive_exposure": 1987282.3719405273,
+            "captured_exposure": 578395.6090303711
+          }
+        },
+        "risk_times_exposure": {
+          "10": {
+            "weeks": 52,
+            "selected_cells": 520,
+            "positive_cells": 2187,
+            "true_positives": 78,
+            "precision": 0.15,
+            "recall": 0.03566529492455418,
+            "exposure_weighted_recall": 0.12997660719898035,
+            "total_positive_exposure": 1987282.3719405273,
+            "captured_exposure": 258300.22025117188
+          },
+          "25": {
+            "weeks": 52,
+            "selected_cells": 1300,
+            "positive_cells": 2187,
+            "true_positives": 145,
+            "precision": 0.11153846153846154,
+            "recall": 0.06630086877000457,
+            "exposure_weighted_recall": 0.2139102863248312,
+            "total_positive_exposure": 1987282.3719405273,
+            "captured_exposure": 425100.1411900879
+          },
+          "50": {
+            "weeks": 52,
+            "selected_cells": 2600,
+            "positive_cells": 2187,
+            "true_positives": 233,
+            "precision": 0.08961538461538461,
+            "recall": 0.10653863740283494,
+            "exposure_weighted_recall": 0.30825739091570376,
+            "total_positive_exposure": 1987282.3719405273,
+            "captured_exposure": 612594.4789871582
+          },
+          "100": {
+            "weeks": 52,
+            "selected_cells": 5200,
+            "positive_cells": 2187,
+            "true_positives": 351,
+            "precision": 0.0675,
+            "recall": 0.16049382716049382,
+            "exposure_weighted_recall": 0.4580418714020772,
+            "total_positive_exposure": 1987282.3719405273,
+            "captured_exposure": 910258.5366479979
+          }
+        }
+      }
+    },
+    "calibration": {
+      "brier_score": 0.03846973432535942,
+      "mean_score": 0.053093391392186384,
+      "observed_rate": 0.044317905487557756,
+      "bins": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "rows": 45770,
+          "mean_score": 0.038640569538994654,
+          "observed_rate": 0.02929866724928993
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "rows": 2010,
+          "mean_score": 0.14321384185196143,
+          "observed_rate": 0.17213930348258707
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "rows": 774,
+          "mean_score": 0.2440102329350669,
+          "observed_rate": 0.23255813953488372
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "rows": 358,
+          "mean_score": 0.3459830828584492,
+          "observed_rate": 0.29329608938547486
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "rows": 182,
+          "mean_score": 0.4422386159544836,
+          "observed_rate": 0.3956043956043956
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "rows": 94,
+          "mean_score": 0.5487658895478236,
+          "observed_rate": 0.5425531914893617
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "rows": 69,
+          "mean_score": 0.6422235305338923,
+          "observed_rate": 0.5217391304347826
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "rows": 40,
+          "mean_score": 0.7509988451773455,
+          "observed_rate": 0.6
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "rows": 35,
+          "mean_score": 0.8436016970353084,
+          "observed_rate": 0.5714285714285714
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "rows": 16,
+          "mean_score": 0.9335791258087066,
+          "observed_rate": 0.75
+        }
+      ]
+    }
+  }
+}

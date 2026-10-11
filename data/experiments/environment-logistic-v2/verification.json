@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "portable_max_error": 0.0,
+  "input_hash_unchanged": true,
+  "fixed_cohort_cells": 949,
+  "training_rows": 48399,
+  "excluded_cross_year_training_rows": 949,
+  "no_coordinates_or_population_predictors": true,
+  "evaluation_status": "exploratory; 2024 has previously been examined"
+}

@@ -1,0 +1,93 @@
+{
+  "experiment": "environment-logistic-v2",
+  "seed": 17,
+  "input": "data/probe/environment/weekly_environment.csv.gz",
+  "input_sha256": "92661680628f902e8489ae2680fae87f546f07122a5c011b33e4436d6f96d6af",
+  "feature_names": [
+    "log1p_fwi_lag1",
+    "log1p_fwi_mean_7d",
+    "log1p_fwi_max_7d",
+    "log1p_fwi_mean_30d",
+    "log1p_past_fire_detections_7d",
+    "log1p_past_fire_detections_30d",
+    "log1p_dc_lag1",
+    "ffmc_lag1",
+    "peat_fraction_peatmap2017",
+    "shrub_fraction_2020",
+    "grass_fraction_2020",
+    "annual_cropland_fraction_2020",
+    "built_fraction_2020",
+    "bare_fraction_2020",
+    "water_fraction_2020",
+    "herbaceous_wetland_fraction_2020",
+    "mangrove_fraction_2020",
+    "industrial_oil_palm_fraction_2019",
+    "smallholder_oil_palm_fraction_2019",
+    "annual_sin",
+    "annual_cos"
+  ],
+  "splits": {
+    "train": 2022,
+    "selection_and_calibration": 2023,
+    "exploratory_evaluation": 2024
+  },
+  "C_candidates": [
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "selection": "2023 AP; smaller C breaks ties",
+  "cohort_cells": 949,
+  "excluded_cells": [
+    "SS-025-0961",
+    "SS-025-0973",
+    "SS-036-0946",
+    "SS-043-0946",
+    "SS-045-0952",
+    "SS-046-0952",
+    "SS-055-0956",
+    "SS-057-0972",
+    "SS-057-0973",
+    "SS-059-0953",
+    "SS-062-0963"
+  ],
+  "no_imputation": true,
+  "no_base_model_refit": true,
+  "budgets": [
+    10,
+    25,
+    50,
+    100
+  ],
+  "exposures": {
+    "population": "population_2020",
+    "annual_cropland": "annual_cropland_ha_2020",
+    "closed_canopy_oil_palm": "closed_canopy_oil_palm_ha_2019"
+  },
+  "ties": "descending score then ascending cell_id",
+  "software": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "sklearn": "1.7.2"
+  },
+  "counts": {
+    "2022": {
+      "rows": 48399,
+      "weeks": 51,
+      "positives": 1020
+    },
+    "2023": {
+      "rows": 49348,
+      "weeks": 52,
+      "positives": 3865
+    },
+    "2024": {
+      "rows": 49348,
+      "weeks": 52,
+      "positives": 2187
+    }
+  },
+  "human_protocol_sha256": "03a4410857d0902f054598e79dca374607c590f78f59a63767069fe6644ce8a8"
+}

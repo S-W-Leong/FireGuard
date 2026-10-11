@@ -1,0 +1,930 @@
+{
+  "experiment": "feature-review",
+  "role": "Development comparison; not independent test evidence",
+  "protocol_sha256": "e459d2275b7138b99c4e6b9c2429fd876b268a3d95f3b462c61749f5e827a73f",
+  "data": {
+    "train": {
+      "rows": 48501,
+      "cells": 951,
+      "weeks": 51,
+      "positive_rows": 1020,
+      "positive_rate": 0.02103049421661409,
+      "first_prediction_date": "2022-01-03",
+      "last_prediction_date": "2022-12-19"
+    },
+    "validation": {
+      "rows": 49452,
+      "cells": 951,
+      "weeks": 52,
+      "positive_rows": 3865,
+      "positive_rate": 0.07815659629539756,
+      "first_prediction_date": "2023-01-02",
+      "last_prediction_date": "2023-12-25"
+    },
+    "purged": {
+      "rows": 951,
+      "cells": 951,
+      "weeks": 1,
+      "positive_rows": 6,
+      "positive_rate": 0.006309148264984227,
+      "first_prediction_date": "2022-12-26",
+      "last_prediction_date": "2022-12-26"
+    },
+    "excluded_future_rows": 49920,
+    "excluded_missing_exposure_rows": 936
+  },
+  "profiles": {
+    "fwi_only": {
+      "features": [
+        "log1p_fwi_lag1"
+      ],
+      "selected_C": 0.01,
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.261353463686425,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 245,
+          "precision": 0.09423076923076923,
+          "recall": 0.06338939197930142,
+          "exposure_weighted_recall": 0.08325916990885131,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 3469921.6021000003,
+          "mean_weekly_recall": 0.06652743337061175,
+          "mean_weekly_exposure_weighted_recall": 0.07929524497649319
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 311,
+          "precision": 0.11961538461538461,
+          "recall": 0.08046571798188874,
+          "exposure_weighted_recall": 0.44382733344238084,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 18497014.246,
+          "mean_weekly_recall": 0.07833633671075936,
+          "mean_weekly_exposure_weighted_recall": 0.3059777307444004
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.1252902835449894,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 183,
+          "precision": 0.07038461538461538,
+          "recall": 0.08487940630797773,
+          "exposure_weighted_recall": 0.10254395427738391,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 2325872.0868,
+          "mean_weekly_recall": 0.07736334054122425,
+          "mean_weekly_exposure_weighted_recall": 0.08639818309556313
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 209,
+          "precision": 0.08038461538461539,
+          "recall": 0.09693877551020408,
+          "exposure_weighted_recall": 0.46496576478138446,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 10546217.973000001,
+          "mean_weekly_recall": 0.0819116532165142,
+          "mean_weekly_exposure_weighted_recall": 0.30760310792053325
+        }
+      },
+      "portable_model_max_absolute_error": 2.7755575615628914e-17
+    },
+    "fwi_and_history": {
+      "features": [
+        "log1p_fwi_lag1",
+        "log1p_past_fire_detections_7d",
+        "log1p_past_fire_detections_30d"
+      ],
+      "selected_C": 0.01,
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.464799871738859,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 744,
+          "precision": 0.28615384615384615,
+          "recall": 0.19249676584734798,
+          "exposure_weighted_recall": 0.16308728127849892,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 6796849.896,
+          "mean_weekly_recall": 0.22260525342018542,
+          "mean_weekly_exposure_weighted_recall": 0.23014866935083614
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 565,
+          "precision": 0.2173076923076923,
+          "recall": 0.1461836998706339,
+          "exposure_weighted_recall": 0.47664320281982214,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 19864653.320099995,
+          "mean_weekly_recall": 0.19105465675711844,
+          "mean_weekly_exposure_weighted_recall": 0.3866368309487662
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.1621400716979146,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 383,
+          "precision": 0.1473076923076923,
+          "recall": 0.17764378478664192,
+          "exposure_weighted_recall": 0.19511300892513975,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 4425496.40716,
+          "mean_weekly_recall": 0.1624153184508175,
+          "mean_weekly_exposure_weighted_recall": 0.1881202376481418
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 332,
+          "precision": 0.1276923076923077,
+          "recall": 0.15398886827458255,
+          "exposure_weighted_recall": 0.47527923429147034,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 10780145.0828,
+          "mean_weekly_recall": 0.1494751016328624,
+          "mean_weekly_exposure_weighted_recall": 0.35653539270234325
+        }
+      },
+      "portable_model_max_absolute_error": 1.1102230246251565e-16
+    },
+    "weather_history_windows": {
+      "features": [
+        "log1p_fwi_lag1",
+        "log1p_fwi_mean_7d",
+        "log1p_fwi_max_7d",
+        "log1p_fwi_mean_30d",
+        "log1p_past_fire_detections_7d",
+        "log1p_past_fire_detections_30d"
+      ],
+      "selected_C": 10.0,
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.4742968415239798,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 746,
+          "precision": 0.28692307692307695,
+          "recall": 0.19301423027166884,
+          "exposure_weighted_recall": 0.16513933218960936,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 6882371.476299999,
+          "mean_weekly_recall": 0.22298707904265694,
+          "mean_weekly_exposure_weighted_recall": 0.22960146598054193
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 570,
+          "precision": 0.21923076923076923,
+          "recall": 0.14747736093143596,
+          "exposure_weighted_recall": 0.47656914691863744,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 19861566.955299996,
+          "mean_weekly_recall": 0.19318849141201463,
+          "mean_weekly_exposure_weighted_recall": 0.3900828195035795
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.16584758442134537,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 391,
+          "precision": 0.1503846153846154,
+          "recall": 0.1813543599257885,
+          "exposure_weighted_recall": 0.19669240832467622,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 4461319.88406,
+          "mean_weekly_recall": 0.18781430692152723,
+          "mean_weekly_exposure_weighted_recall": 0.21107013712178538
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 346,
+          "precision": 0.13307692307692306,
+          "recall": 0.16048237476808905,
+          "exposure_weighted_recall": 0.47524209563865216,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 10779302.7147,
+          "mean_weekly_recall": 0.15689172771279442,
+          "mean_weekly_exposure_weighted_recall": 0.3535479842839686
+        }
+      },
+      "portable_model_max_absolute_error": 1.1102230246251565e-16
+    },
+    "without_coordinates": {
+      "features": [
+        "log1p_fwi_lag1",
+        "log1p_fwi_mean_7d",
+        "log1p_fwi_max_7d",
+        "log1p_fwi_mean_30d",
+        "log1p_past_fire_detections_7d",
+        "log1p_past_fire_detections_30d",
+        "annual_sin",
+        "annual_cos"
+      ],
+      "selected_C": 10.0,
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.4816207548066243,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 743,
+          "precision": 0.2857692307692308,
+          "recall": 0.19223803363518757,
+          "exposure_weighted_recall": 0.16513259409349923,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 6882090.658399999,
+          "mean_weekly_recall": 0.22243589899713015,
+          "mean_weekly_exposure_weighted_recall": 0.2295270033869701
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 565,
+          "precision": 0.2173076923076923,
+          "recall": 0.1461836998706339,
+          "exposure_weighted_recall": 0.4775971484768614,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 19904410.101800002,
+          "mean_weekly_recall": 0.189983859839378,
+          "mean_weekly_exposure_weighted_recall": 0.3877365791165645
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.17043300957438584,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 387,
+          "precision": 0.14884615384615385,
+          "recall": 0.1794990723562152,
+          "exposure_weighted_recall": 0.19719895066751753,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 4472809.129860001,
+          "mean_weekly_recall": 0.18632706432289384,
+          "mean_weekly_exposure_weighted_recall": 0.21090247113899943
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 338,
+          "precision": 0.13,
+          "recall": 0.1567717996289425,
+          "exposure_weighted_recall": 0.47662652833689945,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 10810704.013700001,
+          "mean_weekly_recall": 0.15220183441815904,
+          "mean_weekly_exposure_weighted_recall": 0.36083043416386784
+        }
+      },
+      "portable_model_max_absolute_error": 1.1102230246251565e-16
+    },
+    "without_season": {
+      "features": [
+        "log1p_fwi_lag1",
+        "log1p_fwi_mean_7d",
+        "log1p_fwi_max_7d",
+        "log1p_fwi_mean_30d",
+        "log1p_past_fire_detections_7d",
+        "log1p_past_fire_detections_30d",
+        "latitude",
+        "longitude"
+      ],
+      "selected_C": 10.0,
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.4401851692892544,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 725,
+          "precision": 0.27884615384615385,
+          "recall": 0.18758085381630013,
+          "exposure_weighted_recall": 0.15864192670349953,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 6611584.6347,
+          "mean_weekly_recall": 0.21661953191702724,
+          "mean_weekly_exposure_weighted_recall": 0.21879440593650518
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 602,
+          "precision": 0.23153846153846153,
+          "recall": 0.15575679172056922,
+          "exposure_weighted_recall": 0.4437021010330037,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 18491795.041399997,
+          "mean_weekly_recall": 0.19628861633446218,
+          "mean_weekly_exposure_weighted_recall": 0.38056870230051343
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.13182298378921348,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 377,
+          "precision": 0.145,
+          "recall": 0.174860853432282,
+          "exposure_weighted_recall": 0.16087560557102681,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 3648933.6020000004,
+          "mean_weekly_recall": 0.17815680464400593,
+          "mean_weekly_exposure_weighted_recall": 0.19495462563983612
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 358,
+          "precision": 0.1376923076923077,
+          "recall": 0.1660482374768089,
+          "exposure_weighted_recall": 0.4609213161894083,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 10454482.968700001,
+          "mean_weekly_recall": 0.15751840215918714,
+          "mean_weekly_exposure_weighted_recall": 0.3463665802410689
+        }
+      },
+      "portable_model_max_absolute_error": 1.1102230246251565e-16
+    },
+    "original_full": {
+      "features": [
+        "log1p_fwi_lag1",
+        "log1p_fwi_mean_7d",
+        "log1p_fwi_max_7d",
+        "log1p_fwi_mean_30d",
+        "log1p_past_fire_detections_7d",
+        "log1p_past_fire_detections_30d",
+        "latitude",
+        "longitude",
+        "annual_sin",
+        "annual_cos"
+      ],
+      "selected_C": 10.0,
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.43736025680798557,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 726,
+          "precision": 0.2792307692307692,
+          "recall": 0.18783958602846054,
+          "exposure_weighted_recall": 0.15815240512088868,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 6591183.2601,
+          "mean_weekly_recall": 0.21609092056824186,
+          "mean_weekly_exposure_weighted_recall": 0.21783168593585012
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 609,
+          "precision": 0.23423076923076924,
+          "recall": 0.1575679172056921,
+          "exposure_weighted_recall": 0.44212386420009714,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 18426020.207399998,
+          "mean_weekly_recall": 0.1951820387552891,
+          "mean_weekly_exposure_weighted_recall": 0.38117392736010763
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.12655470052784004,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 376,
+          "precision": 0.14461538461538462,
+          "recall": 0.17439703153988867,
+          "exposure_weighted_recall": 0.1597588707087062,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 3623604.1473,
+          "mean_weekly_recall": 0.17777343262809084,
+          "mean_weekly_exposure_weighted_recall": 0.19282790305845288
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 350,
+          "precision": 0.1346153846153846,
+          "recall": 0.16233766233766234,
+          "exposure_weighted_recall": 0.46371854299870996,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 10517928.852,
+          "mean_weekly_recall": 0.15441443106208153,
+          "mean_weekly_exposure_weighted_recall": 0.34623602210762017
+        }
+      },
+      "portable_model_max_absolute_error": 1.1102230246251565e-16
+    },
+    "location_season_only": {
+      "features": [
+        "latitude",
+        "longitude",
+        "annual_sin",
+        "annual_cos"
+      ],
+      "selected_C": 10.0,
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.07173567053566796,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 57,
+          "precision": 0.021923076923076924,
+          "recall": 0.014747736093143596,
+          "exposure_weighted_recall": 0.005476355397835452,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 228233.4056,
+          "mean_weekly_recall": 0.01098515935164299,
+          "mean_weekly_exposure_weighted_recall": 0.004694796538131674
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 281,
+          "precision": 0.10807692307692307,
+          "recall": 0.07270375161707633,
+          "exposure_weighted_recall": 0.408159924379114,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 17010533.978,
+          "mean_weekly_recall": 0.07527995997641689,
+          "mean_weekly_exposure_weighted_recall": 0.28364544209355363
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.052069267913177106,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 49,
+          "precision": 0.018846153846153846,
+          "recall": 0.022727272727272728,
+          "exposure_weighted_recall": 0.009576246366313976,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 217205.62930000003,
+          "mean_weekly_recall": 0.014295875789924584,
+          "mean_weekly_exposure_weighted_recall": 0.006850520440399133
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 199,
+          "precision": 0.07653846153846154,
+          "recall": 0.09230055658627087,
+          "exposure_weighted_recall": 0.4360230255120203,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 9889747.195600001,
+          "mean_weekly_recall": 0.08194913231883547,
+          "mean_weekly_exposure_weighted_recall": 0.2949640792106384
+        }
+      },
+      "portable_model_max_absolute_error": 2.7755575615628914e-17
+    },
+    "history_only": {
+      "features": [
+        "log1p_past_fire_detections_7d",
+        "log1p_past_fire_detections_30d"
+      ],
+      "selected_C": 0.01,
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.40511005572839365,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 737,
+          "precision": 0.2834615384615385,
+          "recall": 0.1906856403622251,
+          "exposure_weighted_recall": 0.1546474658430359,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 6445110.8872,
+          "mean_weekly_recall": 0.2218251714494664,
+          "mean_weekly_exposure_weighted_recall": 0.22425102900387991
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 604,
+          "precision": 0.2323076923076923,
+          "recall": 0.15627425614489004,
+          "exposure_weighted_recall": 0.4741315548253325,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 19759977.503099993,
+          "mean_weekly_recall": 0.1946680852616887,
+          "mean_weekly_exposure_weighted_recall": 0.38763702015690615
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.10980766989635794,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 391,
+          "precision": 0.1503846153846154,
+          "recall": 0.1813543599257885,
+          "exposure_weighted_recall": 0.17476310586016905,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 3963925.8363600005,
+          "mean_weekly_recall": 0.16240455644131682,
+          "mean_weekly_exposure_weighted_recall": 0.17295051853834498
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 348,
+          "precision": 0.13384615384615384,
+          "recall": 0.1614100185528757,
+          "exposure_weighted_recall": 0.4765515077627414,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 10809002.4189,
+          "mean_weekly_recall": 0.15492282080327954,
+          "mean_weekly_exposure_weighted_recall": 0.3621237812552956
+        }
+      },
+      "portable_model_max_absolute_error": 1.1102230246251565e-16
+    }
+  },
+  "baselines": {
+    "fwi_baseline": {
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.261353463686425,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 245,
+          "precision": 0.09423076923076923,
+          "recall": 0.06338939197930142,
+          "exposure_weighted_recall": 0.08325916990885131,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 3469921.6021000003,
+          "mean_weekly_recall": 0.06652743337061175,
+          "mean_weekly_exposure_weighted_recall": 0.07929524497649319
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 319,
+          "precision": 0.1226923076923077,
+          "recall": 0.08253557567917205,
+          "exposure_weighted_recall": 0.4271022374024391,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 17799976.6451,
+          "mean_weekly_recall": 0.08096598044578197,
+          "mean_weekly_exposure_weighted_recall": 0.2703333994964961
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.1252902835449894,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 183,
+          "precision": 0.07038461538461538,
+          "recall": 0.08487940630797773,
+          "exposure_weighted_recall": 0.10254395427738391,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 2325872.0868,
+          "mean_weekly_recall": 0.07736334054122425,
+          "mean_weekly_exposure_weighted_recall": 0.08639818309556313
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 212,
+          "precision": 0.08153846153846153,
+          "recall": 0.09833024118738404,
+          "exposure_weighted_recall": 0.4350695387836818,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 9868120.4875,
+          "mean_weekly_recall": 0.08113912705931255,
+          "mean_weekly_exposure_weighted_recall": 0.26572203568189645
+        }
+      }
+    },
+    "past_fire_7d_baseline": {
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.3505160213258861,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 643,
+          "precision": 0.2473076923076923,
+          "recall": 0.1663648124191462,
+          "exposure_weighted_recall": 0.12105487885170399,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 5045101.2138,
+          "mean_weekly_recall": 0.15911175747709494,
+          "mean_weekly_exposure_weighted_recall": 0.14377179878596674
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 613,
+          "precision": 0.23576923076923076,
+          "recall": 0.15860284605433375,
+          "exposure_weighted_recall": 0.28167366001110233,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 11739073.530100001,
+          "mean_weekly_recall": 0.1555129084521249,
+          "mean_weekly_exposure_weighted_recall": 0.18810161268333392
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.04728692371803307,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 52,
+          "precision": 0.02,
+          "recall": 0.02411873840445269,
+          "exposure_weighted_recall": 0.009261862990953128,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 210074.87720000002,
+          "mean_weekly_recall": 0.0139153882679417,
+          "mean_weekly_exposure_weighted_recall": 0.005866163574594732
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 52,
+          "precision": 0.02,
+          "recall": 0.02411873840445269,
+          "exposure_weighted_recall": 0.009261862990953128,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 210074.87720000002,
+          "mean_weekly_recall": 0.0139153882679417,
+          "mean_weekly_exposure_weighted_recall": 0.005866163574594732
+        }
+      }
+    },
+    "past_fire_30d_baseline": {
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.3746670648649827,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 733,
+          "precision": 0.28192307692307694,
+          "recall": 0.18965071151358345,
+          "exposure_weighted_recall": 0.15215404331830193,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 6341194.637599999,
+          "mean_weekly_recall": 0.2222109164914423,
+          "mean_weekly_exposure_weighted_recall": 0.22056180367498188
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 680,
+          "precision": 0.26153846153846155,
+          "recall": 0.1759379042690815,
+          "exposure_weighted_recall": 0.3864855374789326,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 16107228.991899997,
+          "mean_weekly_recall": 0.2212014769511247,
+          "mean_weekly_exposure_weighted_recall": 0.32636576162213615
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.10980766989635794,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 391,
+          "precision": 0.1503846153846154,
+          "recall": 0.1813543599257885,
+          "exposure_weighted_recall": 0.17476310586016905,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 3963925.8363600005,
+          "mean_weekly_recall": 0.16240455644131682,
+          "mean_weekly_exposure_weighted_recall": 0.17295051853834498
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 382,
+          "precision": 0.14692307692307693,
+          "recall": 0.17717996289424862,
+          "exposure_weighted_recall": 0.3355503507438347,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 7610855.267000002,
+          "mean_weekly_recall": 0.16754335775683055,
+          "mean_weekly_exposure_weighted_recall": 0.25392187937289534
+        }
+      }
+    },
+    "historical_frequency_baseline": {
+      "validation": {
+        "rows": 49452,
+        "positive_rows": 3865,
+        "average_precision": 0.1297695739247695,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 566,
+          "precision": 0.21769230769230768,
+          "recall": 0.1464424320827943,
+          "exposure_weighted_recall": 0.16118030397160638,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 6717374.4249,
+          "mean_weekly_recall": 0.24115475014897775,
+          "mean_weekly_exposure_weighted_recall": 0.2642014368790764
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 3865,
+          "true_positives": 456,
+          "precision": 0.1753846153846154,
+          "recall": 0.11798188874514877,
+          "exposure_weighted_recall": 0.4279328150857835,
+          "total_positive_exposure": 41676149.376683995,
+          "captured_exposure": 17834591.924700003,
+          "mean_weekly_recall": 0.18903854513763035,
+          "mean_weekly_exposure_weighted_recall": 0.3877640647222668
+        }
+      },
+      "no_recent_detections": {
+        "rows": 45594,
+        "positive_rows": 2156,
+        "average_precision": 0.08891485074209057,
+        "risk_only_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 402,
+          "precision": 0.15461538461538463,
+          "recall": 0.18645640074211503,
+          "exposure_weighted_recall": 0.17454358739161688,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 3958946.78243,
+          "mean_weekly_recall": 0.23053851152650348,
+          "mean_weekly_exposure_weighted_recall": 0.24563980419995463
+        },
+        "risk_times_population_K50": {
+          "weeks": 52,
+          "weeks_with_fire": 52,
+          "selected_cells": 2600,
+          "positive_cells": 2156,
+          "true_positives": 325,
+          "precision": 0.125,
+          "recall": 0.1507421150278293,
+          "exposure_weighted_recall": 0.47162726717290326,
+          "total_positive_exposure": 22681708.572583996,
+          "captured_exposure": 10697312.228900002,
+          "mean_weekly_recall": 0.1803562579638301,
+          "mean_weekly_exposure_weighted_recall": 0.3958418391848241
+        }
+      }
+    }
+  }
+}

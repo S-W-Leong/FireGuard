@@ -18,7 +18,7 @@ Preprocessing in `model_runtime.py` independently stretches each raw 8-bit RGB o
 
 The yellow overlay is an experimental change candidate mask. It does not identify a change's cause, confirm burned land, detect an active fire, or estimate future fire risk. The original training domain and fire-specific accuracy have not been established in this project.
 
-The research notebook under `notebooks/` contains separate LEVIR-CD/PyTorch and ChangeFormer experiments. It does not produce this HDF5 artifact, and its saved outputs must not be presented as validation of the bundled model.
+The root research notebook [`Satellite Experimentation.ipynb`](../../Satellite%20Experimentation.ipynb) contains separate LEVIR-CD/PyTorch and ChangeFormer experiments. It does not produce this HDF5 artifact, and its saved outputs must not be presented as validation of the bundled model.
 
 To check the downloaded file on macOS:
 

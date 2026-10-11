@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "preserved_original_columns": 15,
+  "preserved_original_rows": 149760,
+  "original_input_and_model_hashes_unchanged": true,
+  "direct_netcdf_value_checks": 36,
+  "weather_coordinates_and_dates_match_fwi": true,
+  "direct_raster_geodesic_checks": [
+    {
+      "cell_id": "SS-048-0970",
+      "geodesic_cropland_ha": 8110.238499676153,
+      "aggregated_cropland_ha": 8110.238404736328
+    },
+    {
+      "cell_id": "SS-043-0978",
+      "geodesic_cropland_ha": 0.0,
+      "aggregated_cropland_ha": 0.0
+    },
+    {
+      "cell_id": "SS-046-0952",
+      "geodesic_cropland_ha": 0.0,
+      "aggregated_cropland_ha": 0.0
+    },
+    {
+      "cell_id": "SS-035-0960",
+      "geodesic_cropland_ha": 632.353329709664,
+      "aggregated_cropland_ha": 632.3533173828125
+    },
+    {
+      "cell_id": "SS-043-0979",
+      "geodesic_cropland_ha": 0.6151339286228875,
+      "aggregated_cropland_ha": 0.61513330078125
+    }
+  ],
+  "class_area_sums_match_valid_area": true,
+  "peat_cell_sum_matches_polygon_union": true,
+  "raster_native_pixels_used": true
+}

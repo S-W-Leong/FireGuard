@@ -1,0 +1,14 @@
+{
+  "adopt_challenger": false,
+  "selection_year": 2023,
+  "selection_rule": "higher 2023 AP AND noninferior 2023 risk-only Recall@50",
+  "challenger_development_AP": 0.387582971783604,
+  "incumbent_development_AP": 0.4817157189720804,
+  "challenger_development_Recall50": 0.1666235446313066,
+  "incumbent_development_Recall50": 0.19223803363518757,
+  "incumbent_artifact_preserved": "data/experiments/mvp-model/model.json",
+  "challenger_model": "data/experiments/boosted-tree-v1/model.json",
+  "status": "verified",
+  "model_sha256": "fb5e7f8ef3d878a27688373e4f269fcf8de27280c53395544abd6bbdc81d1d8c",
+  "recommended_model": "data/experiments/mvp-model/model.json"
+}

@@ -1,0 +1,59 @@
+{
+  "format_version": "fireguard-mvp-1",
+  "feature_names": [
+    "log1p_fwi_lag1",
+    "log1p_fwi_mean_7d",
+    "log1p_fwi_max_7d",
+    "log1p_fwi_mean_30d",
+    "log1p_past_fire_detections_7d",
+    "log1p_past_fire_detections_30d",
+    "annual_sin",
+    "annual_cos"
+  ],
+  "scaler": {
+    "mean": [
+      0.283890201344286,
+      0.34542054210586737,
+      0.6610071049872241,
+      0.3816951486721156,
+      0.017910229798240085,
+      0.0687972152704802,
+      0.00222865932130782,
+      -0.022975001660022615
+    ],
+    "scale": [
+      0.4069750043518463,
+      0.34388142929066334,
+      0.5403921341431986,
+      0.2530163006851163,
+      0.12880389518518118,
+      0.2638099619685665,
+      0.7150617684037691,
+      0.6986800768188728
+    ]
+  },
+  "logistic": {
+    "coefficients": [
+      0.1493372761725064,
+      0.37934697593133826,
+      -0.38254780598363,
+      -0.11723096391584123,
+      0.05344270651925595,
+      0.41505301671494216,
+      0.03736640361603968,
+      -0.3273968485108458
+    ],
+    "intercept": -4.106928957365891
+  },
+  "calibrator": {
+    "coefficient": 0.7243787370197489,
+    "intercept": -0.36266788229728225
+  },
+  "selected_C": 10.0,
+  "train_year": 2022,
+  "calibration_year": 2023,
+  "training_cohort_cells": 951,
+  "score_interpretation": "relative risk score; retrospective reanalysis; calibration shifts across years",
+  "feature_transform": "log1p named FWI/count/DC columns; raw named fraction/FFMC columns; sine/cosine of 2*pi*(dayofyear-1)/365.2425",
+  "evaluation_cohort_cells": 949
+}

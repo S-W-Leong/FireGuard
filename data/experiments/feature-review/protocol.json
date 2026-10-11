@@ -1,0 +1,92 @@
+{
+  "experiment": "feature-review",
+  "role": "Development comparison; not independent test evidence",
+  "inputs": {
+    "weekly_sha256": "d55308e79ef528a111e579612845abeb8b6b29f4e0406f45eb5909db6f757e01",
+    "grid_sha256": "a2a14c0c687939f3cec6057ffe0f7bb4683081f43f3d417e9447fcb1701612fd"
+  },
+  "training_year": 2022,
+  "development_validation_year": 2023,
+  "future_years": "Excluded before label validation, scaling, fitting and evaluation",
+  "original_2024_test": "Already inspected; no revised test scores computed",
+  "feature_sets": {
+    "fwi_only": [
+      "log1p_fwi_lag1"
+    ],
+    "fwi_and_history": [
+      "log1p_fwi_lag1",
+      "log1p_past_fire_detections_7d",
+      "log1p_past_fire_detections_30d"
+    ],
+    "weather_history_windows": [
+      "log1p_fwi_lag1",
+      "log1p_fwi_mean_7d",
+      "log1p_fwi_max_7d",
+      "log1p_fwi_mean_30d",
+      "log1p_past_fire_detections_7d",
+      "log1p_past_fire_detections_30d"
+    ],
+    "without_coordinates": [
+      "log1p_fwi_lag1",
+      "log1p_fwi_mean_7d",
+      "log1p_fwi_max_7d",
+      "log1p_fwi_mean_30d",
+      "log1p_past_fire_detections_7d",
+      "log1p_past_fire_detections_30d",
+      "annual_sin",
+      "annual_cos"
+    ],
+    "without_season": [
+      "log1p_fwi_lag1",
+      "log1p_fwi_mean_7d",
+      "log1p_fwi_max_7d",
+      "log1p_fwi_mean_30d",
+      "log1p_past_fire_detections_7d",
+      "log1p_past_fire_detections_30d",
+      "latitude",
+      "longitude"
+    ],
+    "original_full": [
+      "log1p_fwi_lag1",
+      "log1p_fwi_mean_7d",
+      "log1p_fwi_max_7d",
+      "log1p_fwi_mean_30d",
+      "log1p_past_fire_detections_7d",
+      "log1p_past_fire_detections_30d",
+      "latitude",
+      "longitude",
+      "annual_sin",
+      "annual_cos"
+    ],
+    "location_season_only": [
+      "latitude",
+      "longitude",
+      "annual_sin",
+      "annual_cos"
+    ],
+    "history_only": [
+      "log1p_past_fire_detections_7d",
+      "log1p_past_fire_detections_30d"
+    ]
+  },
+  "C_candidates": [
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "selection": "Highest 2023 average precision per profile; ties smaller C",
+  "logistic": {
+    "solver": "lbfgs",
+    "max_iter": 1000,
+    "tol": 1e-06,
+    "random_state": 17,
+    "class_weight": null
+  },
+  "scaling": "Training only; no refit after validation selection",
+  "calibration": "None; avoid assessing a calibrator on the same labels used to fit it",
+  "comparison_budget": 50,
+  "cohort": "Identical fixed cells with known nonnegative population",
+  "secondary_diagnostic": "Zero past-7-day detections; not proof of new ignition",
+  "window_status": "7/30 days and sine/cosine are engineering adaptations, not exact paper reproductions"
+}

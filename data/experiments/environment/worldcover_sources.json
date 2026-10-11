@@ -1,0 +1,102 @@
+{
+  "files": [
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/ESA_WorldCover_10m_2020_v100_S03E102_Map.tif",
+      "bytes": 45052363,
+      "sha256": "fc53ff91352c9756e0d3c8416bced1c1f0cd2a9f13cbd92b15fb5d681ea7a19f"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/ESA_WorldCover_10m_2020_v100_S03E105_Map.tif",
+      "bytes": 21400154,
+      "sha256": "d47ddc031c8384310bef5950c453595478adf48d1e630a3f8e3ed775bb177802"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/ESA_WorldCover_10m_2020_v100_S06E102_Map.tif",
+      "bytes": 37068845,
+      "sha256": "bf8610816c3ddc8f06e2369de887368f0e690aaa900d01e25b17fd8ad3a796f6"
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/ESA_WorldCover_10m_2020_v100_S06E105_Map.tif",
+      "bytes": 40000488,
+      "sha256": "6d4cace7a2e1593d5ac496d3acea9f2a2e2966cbc8fa90dda23de7ee9c734dae"
+    }
+  ],
+  "rasters": [
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/ESA_WorldCover_10m_2020_v100_S03E102_Map.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        102.0,
+        -3.0,
+        105.0,
+        0.0
+      ],
+      "shape": [
+        36000,
+        36000
+      ],
+      "pixel_size": [
+        8.333333333333333e-05,
+        8.333333333333333e-05
+      ],
+      "nodata": 0.0
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/ESA_WorldCover_10m_2020_v100_S03E105_Map.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        105.0,
+        -3.0,
+        108.0,
+        0.0
+      ],
+      "shape": [
+        36000,
+        36000
+      ],
+      "pixel_size": [
+        8.333333333333333e-05,
+        8.333333333333333e-05
+      ],
+      "nodata": 0.0
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/ESA_WorldCover_10m_2020_v100_S06E102_Map.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        102.0,
+        -6.0,
+        105.0,
+        -3.0
+      ],
+      "shape": [
+        36000,
+        36000
+      ],
+      "pixel_size": [
+        8.333333333333333e-05,
+        8.333333333333333e-05
+      ],
+      "nodata": 0.0
+    },
+    {
+      "path": "/Users/leongshiwei/ShiWei_Local_Mac/1_Projects/FireGuard/data/raw/ESA_WorldCover_10m_2020_v100_S06E105_Map.tif",
+      "crs": "EPSG:4326",
+      "bounds": [
+        105.0,
+        -6.0,
+        108.0,
+        -3.0
+      ],
+      "shape": [
+        36000,
+        36000
+      ],
+      "pixel_size": [
+        8.333333333333333e-05,
+        8.333333333333333e-05
+      ],
+      "nodata": 0.0
+    }
+  ]
+}

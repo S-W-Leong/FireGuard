@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "saved_allocation_comparisons": 48,
+  "years": [
+    2023,
+    2024
+  ],
+  "exposures": [
+    "population",
+    "annual_cropland",
+    "closed_canopy_oil_palm"
+  ],
+  "budgets": [
+    10,
+    25,
+    50,
+    100
+  ],
+  "maximum_absolute_difference": 0.0,
+  "cohort_cells": 949,
+  "app_tests": "week, exposure, budget and outcome reveal controls exercised",
+  "browser_check": "clipped grid and basemap rendered in local Streamlit app"
+}

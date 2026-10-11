@@ -1,0 +1,12 @@
+{
+  "test_rows_verified": 49452,
+  "test_weeks": 52,
+  "equal_cohort_cells": 951,
+  "ranking_metric_combinations_independently_recomputed": 48,
+  "train_scaler_mean_verified": true,
+  "portable_model_max_absolute_error_after_csv_roundtrip": {
+    "logistic_raw": 2.220446049250313e-16,
+    "logistic_calibrated": 2.220446049250313e-16
+  },
+  "test_outcome_windows_within_2024": true
+}

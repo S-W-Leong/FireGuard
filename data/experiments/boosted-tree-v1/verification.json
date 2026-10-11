@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "portable_max_error": 0.0,
+  "portable_rows_verified": 98696,
+  "input_hash_unchanged": true,
+  "incumbent_hash_unchanged": true,
+  "cohort_cells": 949,
+  "tree_count": 200,
+  "adoption_uses_2023_only": true,
+  "2024_status": "exploratory; previously examined"
+}
