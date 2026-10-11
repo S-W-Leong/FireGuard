@@ -887,12 +887,12 @@
     }
   ],
   "limits": [
-    "Historical reanalysis; publication-time availability is not verified for live forecasting.",
-    "2023 is development and calibration; 2024 is exploratory after earlier analyses.",
-    "Risk scores are relative rankings, not verified operational probabilities.",
-    "A positive label includes continuing fire and agricultural burning; no detection does not prove no fire.",
-    "Exposure capture does not measure prevented fires, affected people, burned hectares or avoided losses.",
-    "Static agriculture covers annual cropland and closed-canopy oil palm only.",
-    "11 cells are excluded because population is missing or landscape area-quality checks fail."
+    "This historical analysis uses archived weather data. Availability at the time of a live forecast has not been verified.",
+    "The model was developed and calibrated using 2023 data. Results for 2024 are exploratory because they informed earlier analyses.",
+    "Risk scores rank cells by relative fire detection risk; they are not verified probabilities for operational use.",
+    "Qualifying satellite detections include continuing fires and agricultural burning. An absence of detections does not rule out fire.",
+    "Exposure capture measures mapped assets in cells with detections. It does not measure prevented fires, affected people, burned area or avoided losses.",
+    "Agricultural exposure uses fixed maps of annual cropland and closed-canopy oil palm; other crops and young or sparse oil palm are outside this coverage.",
+    "The analysis excludes 11 cells with missing population data or landscape areas that do not meet data quality criteria."
   ]
 }

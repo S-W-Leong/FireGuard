@@ -108,7 +108,7 @@ try:
     bundle_version = (BUNDLE / "manifest.json").stat().st_mtime_ns
     data, grid, manifest, totals = assets(bundle_version)
 except (OSError, ValueError, KeyError) as exc:
-    st.error(f"Could not load the verified dashboard bundle: {exc}")
+    st.error(f"The dashboard data could not be loaded: {exc}")
     st.stop()
 
 
@@ -270,7 +270,7 @@ with dispatch_tab:
                "Weather timestamps do not establish historical publication availability.")
 
 with evaluation_tab:
-    st.markdown("### Did the priority list capture subsequent detections?")
+    st.markdown("### How well did the plan capture subsequent detections?")
     st.write(f"Every strategy receives **{k} cells per week**, the same **949-cell cohort**, and the same "
              f"**{exposure_mode.lower()}** exposure measurements. Observed outcomes are used only for evaluation.")
     period = st.segmented_control("Comparison period", ["Selected week", "All weeks in selected year"],
@@ -315,15 +315,18 @@ with evaluation_tab:
     for column in ["precision", "recall", "exposure_weighted_recall", *capture_columns]:
         display[column] = display[column].map(pct)
     st.dataframe(display.rename(columns={"method": "Strategy", "weeks": "Weeks", "selected_cells": "Selections",
-        "true_positives": "Captured positive cell-weeks", "precision": "Precision", "recall": "Recall",
+        "true_positives": "Selected cell-weeks with detections", "precision": "Precision", "recall": "Recall",
         "exposure_weighted_recall": "Combined-index recall" if combined else "Exposure-weighted recall",
         "population_capture": "Population capture", "cropland_capture": "Cropland capture", "oil_palm_capture": "Oil palm capture"}),
         hide_index=True, width="stretch", alt="Equal-budget baseline outcomes and separate exposure capture measurements.")
-    st.caption(f"{int(ours.positive_cells):,} positive cell-weeks in this comparison. Precision = positives selected / selections. "
-        "Recall = positives selected / all positives. Exposure-weighted recall = exposure in selected positive cells / "
-        "exposure in all positive cells. Yearly results pool numerators and denominators; undefined ratios stay undefined.")
+    st.caption(f"{int(ours.positive_cells):,} cell-weeks with qualifying detections in this comparison. "
+        "Precision = selected cell-weeks with detections / all selections. "
+        "Recall = selected cell-weeks with detections / all cell-weeks with detections. "
+        "Exposure-weighted recall = exposure in selected cells with detections / exposure in all cells with detections. "
+        "Yearly results use totals across weeks; ratios with a zero denominator are shown as undefined.")
     st.info("Exposure capture measures where detections occurred relative to mapped assets. It does not establish "
-            "burned area, losses or effectiveness of preventive inspections. FireGuard may lose to some baselines, particularly for oil palm.")
+            "burned area, losses or effectiveness of preventive inspections. "
+            "Performance varies by strategy and exposure type; some comparison strategies outperform FireGuard, particularly for oil palm.")
     if combined:
         st.caption("Combined-index recall uses the same fixed normalizers and policy weights as allocation. "
                    "Each separate capture ratio uses the original people or hectare measurements on that same selected plan.")
@@ -346,9 +349,10 @@ with evaluation_tab:
             hide_index=True, width="stretch")
 
 with trust_tab:
-    st.markdown("### The actual model and its evidence")
+    st.markdown("### Model overview and evidence")
     st.write(f"**{manifest['model_name']}**, trained on 2022. Selection and sigmoid calibration use 2023. "
-             "The base model is not refitted on later years. The 2024 comparison is exploratory because prior project decisions examined it.")
+             "The base model is not refitted on later years. The 2024 results are an exploratory comparison, "
+             "rather than an independent test, because they informed earlier model development decisions.")
     dev = manifest["model_metrics"]["2023"]
     temporal = manifest["model_metrics"]["2024"]
     a, b = st.columns(2)
@@ -358,27 +362,27 @@ with trust_tab:
                "Scores should be treated as relative risk because calibration shifts across years.")
     st.markdown("#### Prediction target")
     st.write("At least one qualifying VIIRS S-NPP vegetation detection in the next seven local calendar days. "
-             "This is not a verified new ignition, damaging wildfire or burned-area target. No detection does not prove no fire.")
-    st.markdown("#### Retained prediction features")
+             "Detections can include continuing fires and agricultural burning; they do not confirm a new ignition, "
+             "a damaging wildfire or the area burned. An absence of detections does not rule out fire.")
+    st.markdown("#### Model inputs")
     st.table(pd.DataFrame({"Feature": manifest["model"]["feature_names"]}))
     st.write("FWI and detection counts are log-transformed; annual sine/cosine encode seasonality.")
     if "logistic" in manifest["model"]:
-        st.write("The retained logistic model standardizes inputs using training data only. "
+        st.write("The logistic regression model standardizes inputs using training data only. "
                  "Latitude and longitude position cells on the map and sample weather. Population and agricultural hectares "
                  "multiply the risk score for allocation. **They do not enter this occurrence model.** "
-                 "Peat is retained as geographic context.")
+                 "Peat provides geographic context.")
     else:
-        st.write("The retained tree model uses the named weather, history, calendar and landscape inputs listed above. "
+        st.write("The tree model uses the weather, history, calendar and landscape inputs listed above. "
                  "Coordinates are used for mapping and weather sampling. Population and agricultural hectares are allocation multipliers.")
     st.markdown("#### Data sources and dates")
     st.table(pd.DataFrame(manifest["sources"]).rename(columns={"dataset": "Dataset", "date": "Date", "measurement": "Measurement"}))
-    st.markdown("#### Limits to carry into the pitch")
+    st.markdown("#### Scope and interpretation")
     for limit in manifest["limits"]:
         st.write(f"• {limit}")
-    with st.expander("Reproducible handoff and prototype provenance"):
-        st.write(f"Runtime package: `{manifest['model_package']}`. Bundle: {manifest['rows']:,} cell-weeks, "
-                 f"{manifest['weeks']} weeks. Bundle file hashes are checked when loaded.")
-        st.write("The teammate's Streamlit layout, visual style and three-tab flow came from "
-                 f"`{manifest['prototype_branch']}` at `{manifest['prototype_commit']}`. "
-                 "The mock loader, loss-averted estimates and placeholder model claims were replaced.")
+    with st.expander("Data coverage and verification"):
+        st.write(f"The dashboard contains {manifest['rows']:,} cell-weeks across {manifest['weeks']} weeks. "
+                 "Model scores, exposure measurements and evaluation results come from saved project datasets.")
+        st.write("Data file checksums are verified when the dashboard loads. "
+                 "The identifiers below support reproducibility and verification of the model and datasets.")
         st.json({"model_sha256": manifest["selection"]["model_sha256"], "bundle_hashes": manifest["bundle_hashes"]})
