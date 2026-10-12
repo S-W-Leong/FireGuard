@@ -739,13 +739,9 @@ The default builder consumes the selected MVP package, environmental baseline pa
 
 The output is `docs/report_assets/verification.json`. It records source-code hashes, model and bundle hashes, recomputed metrics, example portfolios, and the audited Git revision. The full raw-score check requires the cached environmental table. When that cache is absent, the script explicitly reports the raw-score check as unavailable while performing the dashboard checks. Its refreshed timestamp describes the audit time rather than the original experiment date.
 
-Figures are generated from that JSON, and the formatted report can be rebuilt with:
-
-```sh
-python docs/report_assets/build_pdf.py
-```
-
-The report builder requires ReportLab, Pillow, and Poppler's `pdftoppm` on the rendering path. These are document-generation dependencies rather than dashboard runtime requirements. It writes the final PDF to `output/pdf/FireGuard_Project_Report.pdf` and the figures beside the verification JSON.
+The report figures are retained under `docs/report_assets/`. The Markdown report
+is the versioned public source; presentation-specific PDF build tooling is
+outside the repository.
 
 ### 10.5 Reproducibility levels and acquisition gap
 
@@ -888,11 +884,13 @@ The numbered references follow an IEEE-style format. Online documentation was co
 | P4 | [MVP packaging code](../fireguard/select_mvp.py), [selection](../data/experiments/mvp-model/selection.json), [model](../data/experiments/mvp-model/model.json), [metrics](../data/experiments/mvp-model/metrics.json), [verification](../data/experiments/mvp-model/verification.json) | Retained model, reproduction, and selected results |
 | P5 | [Tree code](../fireguard/boosted_model.py), [protocol](../data/experiments/boosted-tree-v1/protocol.json), [recommendation](../data/experiments/boosted-tree-v1/recommendation.json), [metrics](../data/experiments/boosted-tree-v1/metrics.json) | Challenger configuration, adoption, and results |
 | P6 | [Initial feature-review protocol](../data/experiments/feature-review/protocol.json), [feature-review metrics](../data/experiments/feature-review/metrics.json), [original protocol](../data/experiments/logistic-v1/protocol.json) | Earlier experiments and evaluation history |
-| P7 | [Tests](../tests), [dashboard verification](../data/dashboard/verification.json), [integration notes](FireGuard_Dashboard_Integration.md) | Tests, recorded browser rendering, and interface provenance |
+| P7 | [Tests](../tests), [dashboard verification](../data/dashboard/verification.json), [bundle manifest](../data/dashboard/manifest.json) | Tests, recorded browser rendering, and interface provenance |
 | P8 | [Feasibility record](../data/feasibility.json), [FWI record](../data/fwi_history_feasibility.json), [environmental verification](../data/experiments/environment/verification.json), source records in that experiment directory | Source provenance, aggregation, and original data checks |
 | P9 | [Fresh report verification](report_assets/verification.json), [audit script](report_assets/verify_report.py), [bundle manifest](../data/dashboard/manifest.json) | Recomputed scores, current policies, example portfolios, and source-code hashes |
 
-The working source state is identified by Git revision `46a74d47f38a351b97b1c0eaa4d95f201c420223` and the source-file hashes recorded by P9. File hashes identify the inspected contents even when a working tree contains changes beyond a commit. The project brief is useful historical context, while implementation and experiment artifacts govern this report's technical descriptions.
+The original audit records its pre-cleanup Git revision and source-file hashes
+in P9. File hashes identify the inspected contents across history rewrites.
+Implementation and experiment artifacts govern this report's technical descriptions.
 
 ### Appendix B Dashboard data dictionary
 

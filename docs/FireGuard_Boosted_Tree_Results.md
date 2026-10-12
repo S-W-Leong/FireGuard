@@ -122,11 +122,9 @@ all evaluation rows and checked input, model and protocol hashes.
 | Training/export check | [Verification](../data/experiments/boosted-tree-v1/verification.json) |
 | Independent artifact check | [Independent verification](../data/experiments/boosted-tree-v1/independent_verification.json) |
 
-The input dataset and current model hashes are unchanged. Challenger status is
-saved separately in [model_challenger_status.json](../data/model_challenger_status.json).
-The next project step remains a historical monitoring dashboard with a weekly
-budget and separate population, annual-cropland and oil-palm priority modes.
-Use the existing logistic scoring API and package for that integration.
+The input dataset and current model hashes are unchanged. The recorded
+[recommendation](../data/experiments/boosted-tree-v1/recommendation.json) retains
+the logistic model used by the historical monitoring dashboard.
 
 To reproduce the fit, run the following from the repository root, supplying a
 new output directory:

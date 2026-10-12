@@ -57,7 +57,6 @@ agriculture-focused policies. The CSV records weights, normalization totals,
 cell shares and weighted contributions. Cropland and oil palm remain distinct
 measurements because their map dates differ and their areas can overlap.
 
-
 ## Model and data handoff
 
 The dashboard currently uses the verified eight-feature logistic package in
@@ -69,14 +68,13 @@ geometry hashes.
 To build a new bundle from locally cached, verified artifacts:
 
 ```sh
-uv run python -m fireguard.dashboard_bundle --output /private/tmp/fireguard-dashboard-new
+uv run python -m fireguard.dashboard_bundle --output outputs/dashboard-new
 ```
 
 The builder refuses to overwrite an existing bundle. `--model-package` accepts
 a verified selected model package; a boosted challenger must also be verified
 and recommended by its development gate before it can be bundled. Review the
 new bundle before replacing the deployed files and restart the app afterward.
-
 
 ## Verify
 
@@ -92,7 +90,26 @@ This is a **historical risk-ranking demonstration**. Base training uses 2022;
 2023 supplies development and calibration; 2024 is exploratory. Static map
 years differ. Risk scores are not verified operational probabilities and
 exposure capture does not establish prevented fires, affected people or losses.
-See the public model methodology and results under `docs/`.
+See the [project report](docs/FireGuard_Project_Report.md),
+[model selection](docs/FireGuard_Model_Selection.md), and
+[model results](docs/FireGuard_Model_Results.md) for methodology and evidence.
+
+## Repository contents
+
+- `app.py`, `data_loader.py`, and `fireguard/`: dashboard, ranking, evaluation,
+  and offline model packaging code.
+- `data/dashboard/`: the self-contained runtime bundle.
+- `data/experiments/`: model protocols, parameters, predictions, metrics, and
+  scientific verification records retained for review.
+- `docs/`: public methodology, results, report figures, and the independent
+  report-evidence checker.
+- `tests/` and `satellite_app/test_*.py`: regression tests for the shipped code.
+- `satellite_app/` and `Satellite Experimentation.ipynb`: the separate satellite
+  comparison prototype and its research notebook.
+
+Full model retraining requires the ignored source caches in `data/probe/`;
+a fresh clone can run the dashboard and its regression tests with the bundled
+data. The project report explains this reproducibility limit.
 
 ## Satellite image comparison and experimentation
 

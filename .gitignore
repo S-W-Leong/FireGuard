@@ -1,4 +1,18 @@
 .DS_Store
+# Local tooling and internal planning
+/.agents/
+/.codex/
+/.chart-data-*/
+/docs/superpowers/
+/docs/FireGuard.md
+/docs/FireGuard_Dashboard_Integration.md
+/docs/report_assets/build_pdf.py
+/data/model_status.json
+/data/model_challenger_status.json
+/data/feasibility_partial.json
+/data/fwi_feasibility.json
+/data/fwi_sample_request.json
+.pytest_cache/
 # Generated outputs
 /output/
 /outputs/
@@ -11,8 +25,6 @@ __pycache__/
 data/raw/
 data/probe/
 scripts/
-!.agents/skills/developing-with-streamlit/scripts/
-!.agents/skills/developing-with-streamlit/scripts/**
 .env
 .env.*
 !.env.example
